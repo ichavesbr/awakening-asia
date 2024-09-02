@@ -1,0 +1,390 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style-type: none;
+  box-sizing: border-box;
+  font-family: "Cormorant Garamond", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+header {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.header {
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative; /* Necessário para posicionar o menu abaixo */
+}
+
+h2 {
+  position: relative;
+  padding-bottom: 10px; /* Adicione um espaço suficiente para a barra */
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Posiciona a barra no fundo do h2 */
+  width: 100%; /* Barra cobre toda a largura do h2 */
+  height: 3px;
+  background-color: rgb(241, 196, 15); /* Cor da barra */
+  transition: width 0.3s ease; /* Transição suave */
+}
+
+main {
+  /* max-width: 1200px; */
+  /* o que vier dentro do main deve ter 1200px max */
+  width: 100%;
+}
+
+.logoWrapper img {
+  width: 60px;
+}
+
+nav ul {
+  gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul li a {
+  color: white;
+  position: relative;
+  padding: 0.5rem;
+}
+
+/* Aplique o efeito hover a todos os links, exceto o botão "donate" */
+nav ul.nav-links li:not(.donate) a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(241, 196, 15);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.icon-small {
+  font-size: 1rem; /* Ajuste conforme necessário */
+}
+
+a {
+  cursor: pointer;
+  color: white;
+}
+
+/* Ao passar o mouse sobre qualquer link (exceto o "donate"), a barra aparece */
+nav ul.nav-links li:not(.donate) a:hover::after {
+  transform: scaleX(1);
+}
+
+.donate {
+  color: black;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: rgb(241, 196, 15);
+}
+
+.donate a {
+  color: black;
+  font-weight: 400;
+}
+
+/* Menu Responsivo */
+.nav-menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu-label,
+.donate-toggle {
+  cursor: pointer;
+  display: none; /* Inicialmente escondido */
+}
+.donate-toggle a {
+  color: black;
+  font-weight: 400;
+}
+
+input[type="checkbox"] {
+  display: none; /* Oculta o checkbox */
+}
+
+.menu {
+  display: none; /* Oculta o menu por padrão */
+  position: absolute; /* Posiciona o menu abaixo da .header */
+  top: 100%; /* Começa logo após a .header */
+  left: 0;
+  width: 100%;
+  max-height: calc(100vh - 60px); /* Ajusta a altura máxima */
+  background: rgba(0, 0, 0, 0.8); /* Fundo preto transparente */
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow-y: auto; /* Permite rolar o menu se necessário */
+}
+
+/* Menu links */
+.menu-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-links li {
+  margin: 1rem 0;
+}
+
+.menu-links a {
+  color: white;
+  font-size: 1.5rem;
+}
+
+/* Exibir o menu quando o checkbox estiver marcado */
+input[type="checkbox"]:checked ~ #menu {
+  display: block;
+}
+input[type="checkbox"]:checked ~ .nav-menu .menu-label::after {
+  content: "CLOSE";
+}
+/* SOCIAL NETWORKS ---------------------------------------------------- SOCIAL NETWORKS */
+.social-network {
+  background-color: #ffcc80;
+
+  display: flex;
+  justify-content: center;
+}
+
+.social-network .container {
+  padding: 2rem 0;
+  font-size: 1.25rem;
+  margin: 0 30px;
+  max-width: 1200px;
+  width: 100%;
+  border-bottom: 1px solid black;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.social-network .container .icons {
+  display: flex;
+  font-size: 25px;
+}
+
+.social-network .container .icons li a {
+  margin-left: 40px;
+  color: #ff9800;
+}
+
+.social-network .container .icons li:nth-child(1) a:hover {
+  color: #1877f2;
+}
+
+.social-network .container .icons li:nth-child(2) a:hover {
+  color: black;
+}
+
+.social-network .container .icons li:nth-child(3) a:hover {
+  color: #e4405f;
+}
+
+.social-network .container .icons li:nth-child(4) a:hover {
+  color: #00c300;
+}
+
+/* FOOTER ---------------------------------------------------- FOOTER */
+footer {
+  background-color: black;
+  color: white;
+
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
+footer .container {
+  margin: 3rem 30px;
+  max-width: 1200px;
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 1;
+  gap: 50px;
+}
+
+footer .container .card {
+  max-width: 200px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+footer .container .card:nth-child(1) {
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+footer .container .card:nth-child(1) div {
+  margin-bottom: 10px;
+}
+
+footer .container .card:nth-child(1) p {
+  margin-bottom: 5px;
+}
+
+footer .container .card ul {
+  line-height: 2;
+}
+
+footer .container .card:last-child li > svg {
+  margin-right: 10px;
+}
+
+footer .container .card p {
+  line-height: 1.25;
+}
+
+footer .container .card h2 {
+  margin-bottom: 10px;
+}
+
+footer .container .contact li > svg {
+  color: #ff9800;
+}
+
+footer .container .card:not(.contact) ul li {
+  position: relative;
+  transition: padding-left 0.3s ease;
+}
+
+footer .container .card ul li:not(.contact)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 3px;
+  background-color: rgb(241, 196, 15);
+  transition: width 0.3s ease;
+}
+
+footer .container .card ul li:not(.contact):hover::before {
+  width: 10px; /* Largura da barrinha ao passar o mouse */
+}
+
+footer .container .card ul li:not(.contact):hover {
+  padding-left: 15px; /* Move o texto para a direita ao passar o mouse */
+}
+
+.copyright {
+  background-color: rgb(241, 196, 15);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.contactH2 {
+  margin-top: 2rem;
+}
+
+.contact {
+  margin-bottom: 2rem;
+}
+
+.followUsWrapper ul {
+  gap: 1rem;
+  display: flex;
+  margin-top: 8px;
+}
+
+.instagram-icon,
+.twitter-icon,
+.facebook-icon,
+.youtube-icon {
+  transition: color 0.3s ease;
+}
+.instagram-icon:hover {
+  color: #e1306c;
+}
+.twitter-icon:hover {
+  color: #888888;
+}
+.facebook-icon:hover {
+  color: #1877f2;
+}
+.youtube-icon:hover {
+  color: #ff0000;
+}
+
+/* Media Queries para diferentes tamanhos de tela */
+@media (max-width: 1200px) {
+  .header {
+    padding: 1rem;
+  }
+
+  nav ul {
+    gap: 0.5rem;
+  }
+
+  .logoWrapper img {
+    width: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none; /* Esconde os links de navegação */
+  }
+
+  .menu-label,
+  .donate-toggle {
+    display: block; /* Exibe o link MENU */
+    font-weight: 400;
+    color: black;
+    padding: 0.5rem;
+    background-color: rgb(241, 196, 15);
+    border-radius: 5px;
+  }
+}
+
+/* Ocultar menu automaticamente quando a tela for maior que 900px */
+@media (min-width: 901px) {
+  .menu {
+    display: none; /* Oculta o menu quando a tela é maior que 900px */
+  }
+
+  input[type="checkbox"]:checked ~ #menu {
+    display: none; /* Garante que o menu não esteja visível quando o checkbox está marcado e a tela é maior */
+  }
+}
