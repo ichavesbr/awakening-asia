@@ -58,7 +58,7 @@ const Navbar = () => {
       </div>
 
       <nav className={menuOpen ? "open" : ""}>
-        <ul className="nav-links">
+        <ul>
           {links.map(link => (
             <React.Fragment key={link}>
               {link === "donate" ? (
