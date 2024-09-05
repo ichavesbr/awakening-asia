@@ -2,6 +2,7 @@ import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebookF, faInstagram, faXTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import "@fortawesome/fontawesome-svg-core/styles.css"
+import Image from "next/image"
 
 const Footer = () => {
   return (
@@ -10,16 +11,9 @@ const Footer = () => {
         <div className="container">
           <div className="card">
             <div>
-              <img
-                src="https://awakeningasia.org/wp-content/uploads/2023/07/cropped-AWAKENINGTOKYOwhite.png"
-                alt="awakening tokyo logo 1"
-                width="70px"
-              />
-              <img
-                src="https://awakeningasia.org/wp-content/uploads/2023/07/Awakening-Logo-300x93.png"
-                alt="awakening tokyo logo 2"
-                width="215px"
-              />
+              <Image src="/logo-flag.png" alt="logo flag footer" width={80} height={80} />
+
+              <Image src="/logo-text.png" alt="logo text footer" width={226} height={70} />
             </div>
             <p>Spreading the light of Jesus Christ across Asia.</p>
             <p>Join us in our mission of love, faith, and hope.</p>
@@ -64,8 +58,10 @@ const Footer = () => {
           <div className="card">
             <h2 className="address">OUR ADDRESS</h2>
             <ul>
-              <span>イチロービル 4F, 2-23-9</span>
-              <p>Kita-Ueno, Taito-ku, Tokyo</p>
+              <li>イチロービル 4F, 2-23-9</li>
+              <li>
+                <p>Kita-Ueno, Taito-ku, Tokyo</p>
+              </li>
             </ul>
 
             <h2 className="contactH2">CONTACT US</h2>
@@ -76,38 +72,46 @@ const Footer = () => {
             <h2>SOCIAL MEDIA</h2>
             <div className="followUsWrapper">
               <ul>
-                <a href="https://www.instagram.com/awakeningasia">
-                  <FontAwesomeIcon
-                    icon={faInstagram}
-                    aria-label="instagram link"
-                    style={{ width: "25px", height: "25px" }}
-                    className="instagram-icon"
-                  />
-                </a>
-                <a href="https://twitter.com/awakeningasia">
-                  <FontAwesomeIcon
-                    icon={faXTwitter}
-                    aria-label="x link"
-                    style={{ width: "25px", height: "25px" }}
-                    className="twitter-icon"
-                  />
-                </a>
-                <a href="https://www.facebook.com/awakeningasia.tokyo">
-                  <FontAwesomeIcon
-                    icon={faFacebookF}
-                    aria-label="facebook link"
-                    style={{ width: "25px", height: "25px" }}
-                    className="facebook-icon"
-                  />
-                </a>
-                <a href="https://www.youtube.com/@AwakeningAsiaTV">
-                  <FontAwesomeIcon
-                    icon={faYoutube}
-                    aria-label="youtube link"
-                    style={{ width: "25px", height: "25px" }}
-                    className="youtube-icon"
-                  />
-                </a>
+                <li>
+                  <a href="https://www.instagram.com/awakeningasia" aria-label="instagram link">
+                    <FontAwesomeIcon
+                      icon={faInstagram}
+                      aria-label="instagram link"
+                      style={{ width: "25px", height: "25px" }}
+                      className="instagram-icon"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/awakeningasia" aria-label="x link">
+                    <FontAwesomeIcon
+                      icon={faXTwitter}
+                      aria-label="x link"
+                      style={{ width: "25px", height: "25px" }}
+                      className="twitter-icon"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/awakeningasia.tokyo" aria-label="facebook link">
+                    <FontAwesomeIcon
+                      icon={faFacebookF}
+                      aria-label="facebook link"
+                      style={{ width: "25px", height: "25px" }}
+                      className="facebook-icon"
+                    />
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.youtube.com/@AwakeningAsiaTV" aria-label="youtube link">
+                    <FontAwesomeIcon
+                      icon={faYoutube}
+                      aria-label="youtube link"
+                      style={{ width: "25px", height: "25px" }}
+                      className="youtube-icon"
+                    />
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
