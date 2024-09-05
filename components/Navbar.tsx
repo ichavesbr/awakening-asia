@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 
 import React, { useEffect, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import "./navbar.css"
-import Image from "next/image"
 
 const links = ["about us", "school", "events", "lives", "join us", "contact", "donate"]
 

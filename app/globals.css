@@ -298,7 +298,7 @@ footer .container .card ul li:not(.contact):hover {
   margin-bottom: 2rem;
 }
 
-.followUsWrapper ul {
+.followUsWrapper {
   gap: 1rem;
   display: flex;
   margin-top: 8px;
