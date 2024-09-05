@@ -50,7 +50,7 @@ const SchoolLinks = () => {
       <h2>SCHOOL - AASM</h2>
       <ul>
         {schoolLinks.map(link => (
-          <li>
+          <li key={link}>
             <Link href="#">{link}</Link>
           </li>
         ))}
@@ -65,7 +65,7 @@ const UsefulLinks = () => {
       <h2>USEFUL LINKS</h2>
       <ul>
         {usefulLinks.map(link => (
-          <li>
+          <li key={link}>
             <Link href="#">{link}</Link>
           </li>
         ))}
@@ -80,7 +80,7 @@ const SocialMediaLinks = () => {
       <h2>SOCIAL MEDIA</h2>
       <div className="followUsWrapper">
         {snsIcons.map(({ sns, icon, link }) => (
-          <a href={link} aria-label={`${sns} link`}>
+          <a key={link} href={link} aria-label={`${sns} link`}>
             <FontAwesomeIcon icon={icon} style={{ width: "25px", height: "25px" }} className={`${sns}-icon`} />
           </a>
         ))}
