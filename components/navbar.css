@@ -20,6 +20,48 @@ header {
   overflow: hidden;
 }
 
+@media (max-width: 1200px) {
+  .header {
+    padding: 1rem;
+  }
+
+  nav ul {
+    gap: 0.5rem;
+  }
+
+  .logoWrapper img {
+    width: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .menu-label,
+  .donate-toggle {
+    display: block; /* Exibe o link MENU */
+    font-weight: 400;
+    color: black;
+    padding: 0.5rem;
+    background-color: rgb(241, 196, 15);
+    border-radius: 5px;
+  }
+}
+
+/* Ocultar menu automaticamente quando a tela for maior que 900px */
+@media (min-width: 901px) {
+  .menu {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .icons {
     display: block;

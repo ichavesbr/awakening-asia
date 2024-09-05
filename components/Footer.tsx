@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faInstagram, faXTwitter, faFacebookF, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import Image from "next/image"
+import "./footer.css"
 
 const schoolLinks = ["What is AASM?", "Instructors", "Testimonies", "Study with us"]
 const usefulLinks = ["Home", "About us", "School", "Contact"]
@@ -126,4 +127,5 @@ const Footer = () => {
     </>
   )
 }
+
 export default Footer
