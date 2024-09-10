@@ -40,10 +40,6 @@ header {
     align-items: flex-start;
   }
 
-  .nav-links {
-    display: none;
-  }
-
   .menu-label,
   .donate-toggle {
     display: block; /* Exibe o link MENU */
@@ -56,13 +52,13 @@ header {
 }
 
 /* Ocultar menu automaticamente quando a tela for maior que 900px */
-@media (min-width: 901px) {
-  .menu {
-    display: none;
+@media (max-width: 901px) {
+  nav ul li a {
+    padding: 0.2rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 775px) {
   .icons {
     display: block;
   }
