@@ -1,3 +1,4 @@
+import Image from "next/image"
 import "./page.css"
 
 type Employee = {
@@ -10,24 +11,24 @@ type Employee = {
 }
 
 const employees: Employee[] = [
-  {
-    name: "Masamitsu Morishita",
-    role: "CEO",
-    message:
-      "Born and raised in Tokyo, Japan. After rejecting God for many years, Masamitsu had radical encounters with Jesus in the summer of 2014, then received his calling for the great harvest of the souls in the world including Asia. He also has a passion to equip Christians with the truth, and train them to live and think like Christ.",
-    image: "./senior-pastor-masamitsu.png",
-    instagram: "masamitsumorishita",
-    facebook: "masamitsumorishita",
-  },
-  {
-    name: "Esther Morishita",
-    role: "CEO",
-    message:
-      "Grew up in China, had a radical face to face encounter with Jesus when she was 6 years old. After she spent 5 years in London to study fashion and to work for Burberry, she received God's calling to lead a harvest movement in Asia, Europe and other nations. She also has a big passion in creative ministries to transform the culture of society.",
-    image: "./senior-pastor-esther.png",
-    instagram: "esthermorishita",
-    facebook: "esthermorishita",
-  },
+  // {
+  //   name: "Masamitsu Morishita",
+  //   role: "CEO",
+  //   message:
+  //     "Born and raised in Tokyo, Japan. After rejecting God for many years, Masamitsu had radical encounters with Jesus in the summer of 2014, then received his calling for the great harvest of the souls in the world including Asia. He also has a passion to equip Christians with the truth, and train them to live and think like Christ.",
+  //   image: "./senior-pastor-masamitsu.png",
+  //   instagram: "masamitsumorishita",
+  //   facebook: "masamitsumorishita",
+  // },
+  // {
+  //   name: "Esther Morishita",
+  //   role: "CEO",
+  //   message:
+  //     "Grew up in China, had a radical face to face encounter with Jesus when she was 6 years old. After she spent 5 years in London to study fashion and to work for Burberry, she received God's calling to lead a harvest movement in Asia, Europe and other nations. She also has a big passion in creative ministries to transform the culture of society.",
+  //   image: "./senior-pastor-esther.png",
+  //   instagram: "esthermorishita",
+  //   facebook: "esthermorishita",
+  // },
   {
     name: "Baruch van Beek",
     role: "Revival Group Pastor",
@@ -69,7 +70,7 @@ export default function About() {
             </p>
           </div>
           <div className="about-img">
-            <img src="/about-us.png" alt="about us image" />
+            <Image src="/about-us.png" alt="about us image" height={300} width={400} />
           </div>
         </div>
       </section>
@@ -84,7 +85,7 @@ export default function About() {
                 .filter(employee => employee.role === "CEO")
                 .map((employee, index) => (
                   <div className="card large-card" key={index}>
-                    <img src={employee.image} alt={employee.name} className="team-image" />
+                    <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} />
                     <h3 className="team-name">{employee.name}</h3>
                     <p className="team-role">Founder & Senior Pastor</p>
                     {employee.role === "CEO" && employee.message && (
@@ -108,7 +109,7 @@ export default function About() {
                 .filter(employee => employee.role !== "CEO")
                 .map((employee, index) => (
                   <div className="card small-card" key={index}>
-                    <img src={employee.image} alt={employee.name} className="team-image" />
+                    {/* <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} /> */}
                     <div className="team-info-small-card">
                       <h3 className="team-name">{employee.name}</h3>
                       <p className="team-role">{employee.role}</p>
@@ -136,7 +137,7 @@ export default function About() {
           <h2 className="team-title">Vision</h2>
           <div className="vision-wrapper">
             <div className="vision-img-wrapper">
-              <img src="/vision.png" alt="vision image" />
+              <Image src="/vision.png" alt="vision image" height={300} width={400} />
             </div>
             <div className="vision-txt">
               <h3>Church Planting in Tokyo</h3>
@@ -157,13 +158,13 @@ export default function About() {
               </p>
             </div>
             <div className="vision-img-wrapper leaders-img">
-              <img src="/leaders.png" alt="vision image" />
+              <Image src="/leaders.png" alt="vision image" height={300} width={400} />
             </div>
           </div>
 
           <div className="vision-wrapper">
             <div className="vision-img-wrapper">
-              <img src="/stadium.png" alt="vision image" />
+              <Image src="/stadium.png" alt="vision image" height={300} width={400} />
             </div>
             <div className="vision-txt">
               <h3>Revival Meeting at the Stadium</h3>
