@@ -47,12 +47,6 @@ const employees: Employee[] = [
     image: "/pastor-alisa.png",
     facebook: "alisarene",
   },
-  {
-    name: "Alisa Rene White",
-    role: "Designer UX",
-    image: "/pastor-alisa.png",
-    facebook: "alisarene",
-  },
 ]
 
 export default function About() {
@@ -84,21 +78,21 @@ export default function About() {
               {employees
                 .filter(employee => employee.role === "CEO")
                 .map((employee, index) => (
-                  <div className="card large-card" key={index}>
+                  <div className="card large-card" key={employee.name + employee.role}>
                     {employee.image && (
                       <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} />
                     )}
                     <h3 className="team-name">{employee.name}</h3>
                     <p className="team-role">Founder & Senior Pastor</p>
-                    {employee.role === "CEO" && employee.message && (
-                      <p className="team-message">"{employee.message}"</p>
+                    {employee.message && (
+                      <p className="team-message">&quot;{employee.message}&quot;</p>
                     )}
                     <div className="team-socials">
                       {employee.instagram && (
-                        <a href={`https://instagram.com/${employee.instagram}`} className="instagram-link"></a>
+                        <a href={`https://instagram.com/${employee.instagram}`} className="instagram-link" aria-label={`Instagram of ${employee.name}`}></a>
                       )}
                       {employee.facebook && (
-                        <a href={`https://facebook.com/${employee.facebook}`} className="facebook-link"></a>
+                        <a href={`https://facebook.com/${employee.facebook}`} className="facebook-link" aria-label={`Facebook of ${employee.name}`}></a>
                       )}
                     </div>
                   </div>
@@ -110,20 +104,22 @@ export default function About() {
               {employees
                 .filter(employee => employee.role !== "CEO")
                 .map((employee, index) => (
-                  <div className="card small-card" key={index}>
-                    <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} />
+                  <div className="card small-card" key={employee.name + employee.role}>
+                    {employee.image && (
+                      <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} />
+                    )}
                     <div className="team-info-small-card">
                       <h3 className="team-name">{employee.name}</h3>
                       <p className="team-role">{employee.role}</p>
-                      {employee.role === "CEO" && employee.message && (
-                        <p className="team-message">"{employee.message}"</p>
+                      {employee.message && (
+                        <p className="team-message">&quot;{employee.message}&quot;</p>
                       )}
                       <div className="team-socials">
                         {employee.instagram && (
-                          <a href={`https://instagram.com/${employee.instagram}`} className="instagram-link"></a>
+                          <a href={`https://instagram.com/${employee.instagram}`} className="instagram-link" aria-label={`Instagram of ${employee.name}`}></a>
                         )}
                         {employee.facebook && (
-                          <a href={`https://facebook.com/${employee.facebook}`} className="facebook-link"></a>
+                          <a href={`https://facebook.com/${employee.facebook}`} className="facebook-link" aria-label={`Facebook of ${employee.name}`}></a>
                         )}
                       </div>
                     </div>
