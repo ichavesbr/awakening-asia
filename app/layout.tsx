@@ -1,8 +1,7 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
-
-const inter = Inter({ subsets: ["latin"] })
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
 
 export const metadata: Metadata = {
   title: "Awakening Asia | Tokyo",
@@ -10,14 +9,14 @@ export const metadata: Metadata = {
     "We're building a new generation of dedicated leaders to share the gospel and lead Jesus movements. It's Asia's time to receive Jesus, and God is preparing leaders to make a real impact with His power.",
 }
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   )
 }

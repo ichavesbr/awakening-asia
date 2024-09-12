@@ -11,6 +11,35 @@
   letter-spacing: 0.5px;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: purple;
+}
+
+section {
+  width: 100%;
+  padding: 2rem;
+}
+
+.section-wrapper {
+  /* o que vier dentro da primeira DIV do section deve ter 1200px max */
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 h2 {
   position: relative;
   padding-bottom: 10px; /* Adicione um espaço suficiente para a barra */
@@ -26,12 +55,6 @@ h2::after {
   height: 3px;
   background-color: rgb(241, 196, 15); /* Cor da barra */
   transition: width 0.3s ease; /* Transição suave */
-}
-
-main {
-  /* max-width: 1200px; */
-  /* o que vier dentro do main deve ter 1200px max */
-  width: 100%;
 }
 
 nav ul {

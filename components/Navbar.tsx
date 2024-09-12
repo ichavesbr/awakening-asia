@@ -7,7 +7,7 @@ import Image from "next/image"
 import Link from "next/link"
 import "./navbar.css"
 
-const links = ["about us", "school", "events", "lives", "join us", "contact", "donate"]
+const links = ["about", "school", "events", "lives", "join", "contact", "donate"]
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <header>
       <div>
-        <a href="/home.html" aria-label="link">
+        <a href="/" aria-label="link">
           <Image src="/logo-flag.png" alt="logo flag navbar" width={80} height={80} />
         </a>
       </div>
@@ -62,15 +62,15 @@ const Navbar = () => {
             <React.Fragment key={link}>
               {link === "donate" ? (
                 <li className="donate">
-                  <a href={`/${link}.html`} aria-label={`${link} link`}>
+                  <Link href={`/${link}`} aria-label={`${link} link`}>
                     {link.toUpperCase()}
-                  </a>
+                  </Link>
                 </li>
               ) : (
                 <li>
-                  <a href={`/${link}.html`} aria-label={`${link} link`}>
+                  <Link href={`/${link}`} aria-label={`${link} link`}>
                     {link.toUpperCase()}
-                  </a>
+                  </Link>
                 </li>
               )}
             </React.Fragment>
