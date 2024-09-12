@@ -11,46 +11,46 @@ type Employee = {
 }
 
 const employees: Employee[] = [
-  // {
-  //   name: "Masamitsu Morishita",
-  //   role: "CEO",
-  //   message:
-  //     "Born and raised in Tokyo, Japan. After rejecting God for many years, Masamitsu had radical encounters with Jesus in the summer of 2014, then received his calling for the great harvest of the souls in the world including Asia. He also has a passion to equip Christians with the truth, and train them to live and think like Christ.",
-  //   image: "./senior-pastor-masamitsu.png",
-  //   instagram: "masamitsumorishita",
-  //   facebook: "masamitsumorishita",
-  // },
-  // {
-  //   name: "Esther Morishita",
-  //   role: "CEO",
-  //   message:
-  //     "Grew up in China, had a radical face to face encounter with Jesus when she was 6 years old. After she spent 5 years in London to study fashion and to work for Burberry, she received God's calling to lead a harvest movement in Asia, Europe and other nations. She also has a big passion in creative ministries to transform the culture of society.",
-  //   image: "./senior-pastor-esther.png",
-  //   instagram: "esthermorishita",
-  //   facebook: "esthermorishita",
-  // },
+  {
+    name: "Masamitsu Morishita",
+    role: "CEO",
+    message:
+      "Born and raised in Tokyo, Japan. After rejecting God for many years, Masamitsu had radical encounters with Jesus in the summer of 2014, then received his calling for the great harvest of the souls in the world including Asia. He also has a passion to equip Christians with the truth, and train them to live and think like Christ.",
+    image: "/senior-pastor-masamitsu.png",
+    instagram: "masamitsumorishita",
+    facebook: "masamitsumorishita",
+  },
+  {
+    name: "Esther Morishita",
+    role: "CEO",
+    message:
+      "Grew up in China, had a radical face to face encounter with Jesus when she was 6 years old. After she spent 5 years in London to study fashion and to work for Burberry, she received God's calling to lead a harvest movement in Asia, Europe and other nations. She also has a big passion in creative ministries to transform the culture of society.",
+    image: "/senior-pastor-esther.png",
+    instagram: "esthermorishita",
+    facebook: "esthermorishita",
+  },
   {
     name: "Baruch van Beek",
     role: "Revival Group Pastor",
-    image: "./pastor-baruch.png",
+    image: "/pastor-baruch.png",
     instagram: "baruchvanbeek",
   },
   {
     name: "Alisa Rene White",
     role: "Revival Group Pastor",
-    image: "./pastor-alisa.png",
+    image: "/pastor-alisa.png",
     facebook: "alisarene",
   },
   {
     name: "Alisa Rene White",
     role: "Designer UX",
-    image: "./pastor-alisa.png",
+    image: "/pastor-alisa.png",
     facebook: "alisarene",
   },
   {
     name: "Alisa Rene White",
     role: "Designer UX",
-    image: "./pastor-alisa.png",
+    image: "/pastor-alisa.png",
     facebook: "alisarene",
   },
 ]
@@ -85,7 +85,9 @@ export default function About() {
                 .filter(employee => employee.role === "CEO")
                 .map((employee, index) => (
                   <div className="card large-card" key={index}>
-                    <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} />
+                    {employee.image && (
+                      <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} />
+                    )}
                     <h3 className="team-name">{employee.name}</h3>
                     <p className="team-role">Founder & Senior Pastor</p>
                     {employee.role === "CEO" && employee.message && (
@@ -109,7 +111,7 @@ export default function About() {
                 .filter(employee => employee.role !== "CEO")
                 .map((employee, index) => (
                   <div className="card small-card" key={index}>
-                    {/* <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} /> */}
+                    <Image src={employee.image} alt={employee.name} className="team-image" height={300} width={400} />
                     <div className="team-info-small-card">
                       <h3 className="team-name">{employee.name}</h3>
                       <p className="team-role">{employee.role}</p>
