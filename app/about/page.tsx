@@ -3,7 +3,6 @@ import { faInstagram, faXTwitter, faFacebookF, faYoutube } from "@fortawesome/fr
 import "@fortawesome/fontawesome-svg-core/styles.css"
 import Image from "next/image"
 import "./page.css"
-import Link from "next/link"
 
 type Employee = {
   name: string
@@ -223,30 +222,30 @@ export default function About() {
             <p>
               We believe in salvation through faith in Jesus Christ alone. Jesus was born of the virgin Mary, took on
               our sins, died on the cross, and was resurrected on the third day (Matthew 1:18-25, 1 Corinthians 15:3-4).
-              His sacrifice on the cross is the manifestation of God’s profound love, restoring our personal
+              His sacrifice on the cross is the manifestation of God&apos;s profound love, restoring our personal
               relationship with Him (John 3:16, 2 Corinthians 5:18-19). Through this, we have been transformed from
               slaves of sin into new creations inheriting righteousness in Christ (2 Corinthians 5:17, Romans 12:2).
               Moreover, no one can come to the Father except through Jesus (John 14:6).
             </p>
             <p>
               We believe that we are already made in the likeness of Christ as new creations, and the Holy Spirit
-              empowers us to live out God's will, helping us grow towards this likeness in the flesh. Specifically, the
-              Holy Spirit produces in us the fruits of love, joy, peace, patience, kindness, goodness, faithfulness,
-              gentleness, and self-control (Galatians 5:22-23). The Holy Spirit also grants us gifts to accomplish God’s
-              work (Acts 1:8, 1 Corinthians 12:4-11). This enables us to live humbly, obediently, and forgivingly,
-              loving our neighbors, and practicing God’s will (Philippians 2:5-8, Colossians 3:12-14).
+              empowers us to live out God&apos;s will, helping us grow towards this likeness in the flesh. Specifically,
+              the Holy Spirit produces in us the fruits of love, joy, peace, patience, kindness, goodness, faithfulness,
+              gentleness, and self-control (Galatians 5:22-23). The Holy Spirit also grants us gifts to accomplish
+              God&apos;s work (Acts 1:8, 1 Corinthians 12:4-11). This enables us to live humbly, obediently, and
+              forgivingly, loving our neighbors, and practicing God&apos;s will (Philippians 2:5-8, Colossians 3:12-14).
             </p>
             <p>
               While we once lived according to our fleshly desires, will, and plans, we now dedicate our lives to God,
-              having been made His children. We live for God’s desires, will, and plans. Our purpose on earth is to live
-              for God and to fulfill the Great Commission that Jesus commanded. Jesus will return once the Gospel has
-              been proclaimed to all creation, and at that time, all people will be judged and sent either to heaven or
-              hell (Matthew 28:18-20, Matthew 24:14, Revelation 20:11-15).
+              having been made His children. We live for God&apos;s desires, will, and plans. Our purpose on earth is to
+              live for God and to fulfill the Great Commission that Jesus commanded. Jesus will return once the Gospel
+              has been proclaimed to all creation, and at that time, all people will be judged and sent either to heaven
+              or hell (Matthew 28:18-20, Matthew 24:14, Revelation 20:11-15).
             </p>
             <p>
-              We believe the Bible is divinely inspired and is the absolute truth. God's word is unchanging (2 Timothy
-              3:16, Hebrews 13:8). God continues to speak to us today through the Holy Spirit, and these words of the
-              Spirit are tested against the unchanging word of the Bible (John 16:13, 1 John 4:1).
+              We believe the Bible is divinely inspired and is the absolute truth. God&apos;s word is unchanging (2
+              Timothy 3:16, Hebrews 13:8). God continues to speak to us today through the Holy Spirit, and these words
+              of the Spirit are tested against the unchanging word of the Bible (John 16:13, 1 John 4:1).
             </p>
             <p>
               The church is designed by God and led by appointed leaders to build and guide believers in sound faith,
@@ -257,9 +256,10 @@ export default function About() {
               Joshua 24:15, Hebrews 13:17).
             </p>
             <p>
-              As a family of God, we support members’ physical, mental, and spiritual well-being by demonstrating God’s
-              love through comforting, encouragement, and also challenging with the truth in love to overcome the
-              enemy’s lies, compromises, and ungodly values (1 Thessalonians 5:14, Ephesians 4:15, Romans 12:10).
+              As a family of God, we support members&apos; physical, mental, and spiritual well-being by demonstrating
+              God&apos;s love through comforting, encouragement, and also challenging with the truth in love to overcome
+              the enemy&apos;s lies, compromises, and ungodly values (1 Thessalonians 5:14, Ephesians 4:15, Romans
+              12:10).
             </p>
           </div>
         </div>
