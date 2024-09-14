@@ -26,6 +26,28 @@ const Navbar = () => {
     }
   }, [menuOpen])
 
+  const OpenedMenu = (
+    <ul className="nav-links">
+      {links.map(link => (
+        <React.Fragment key={link}>
+          {link === "donate" ? (
+            <li className="donate">
+              <Link href={`/${link}`} aria-label={`${link} link`}>
+                {link.toUpperCase()}
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link href={`/${link}`} aria-label={`${link} link`} onClick={handleMenu}>
+                {link.toUpperCase()}
+              </Link>
+            </li>
+          )}
+        </React.Fragment>
+      ))}
+    </ul>
+  )
+
   return (
     <header>
       <div>
@@ -56,27 +78,7 @@ const Navbar = () => {
         )}
       </div>
 
-      <nav className={menuOpen ? "open" : ""}>
-        <ul className="nav-links">
-          {links.map(link => (
-            <React.Fragment key={link}>
-              {link === "donate" ? (
-                <li className="donate">
-                  <Link href={`/${link}`} aria-label={`${link} link`}>
-                    {link.toUpperCase()}
-                  </Link>
-                </li>
-              ) : (
-                <li>
-                  <Link href={`/${link}`} aria-label={`${link} link`}>
-                    {link.toUpperCase()}
-                  </Link>
-                </li>
-              )}
-            </React.Fragment>
-          ))}
-        </ul>
-      </nav>
+      <nav className={menuOpen ? "open" : ""}>{OpenedMenu}</nav>
     </header>
   )
 }

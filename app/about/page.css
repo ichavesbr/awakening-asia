@@ -1,28 +1,16 @@
 .about {
   background-color: whitesmoke;
-  /* color: rgb(118, 118, 118); */
-}
-
-.about .about-txt {
-  width: 600px;
-  gap: 1rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .about .about-txt h1 {
   font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
-
-.about-img {
-  display: flex;
-}
-
-.about img {
-  width: auto;
-  max-height: 300px;
-  height: 100%;
-  object-fit: cover;
+.about .about-txt p {
+  color: rgb(118, 118, 118);
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 .pastors {
@@ -38,7 +26,8 @@
   background-color: whitesmoke;
 }
 
-.vision .section-wrapper {
+.vision .section-wrapper,
+.statement-of-faith .section-wrapper {
   justify-content: center;
   flex-direction: column;
 }
@@ -47,13 +36,14 @@
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 2rem;
 }
 
 .team-socials {
   display: flex;
   justify-content: center;
   gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .instagram-link {
@@ -161,7 +151,7 @@
   color: rgb(241, 196, 15);
 
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .team-message {
@@ -190,7 +180,6 @@
   align-items: center;
   justify-content: center;
   width: 200%;
-  padding: 0 5rem 0 0;
 }
 
 .vision-img-wrapper img {
@@ -201,12 +190,18 @@
 }
 
 .vision-txt {
-  padding: 5rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.vision-txt h3 {
+  align-self: flex-start;
 }
 
 .vision-wrapper h3 {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .vision-wrapper p {
@@ -214,16 +209,31 @@
   line-height: 1.5rem;
 }
 
-.leaders-txt {
-  padding: 5rem 0;
-}
-
-.leaders-img {
-  padding: 0 0 0 5rem;
-}
-
 .leaders-img img {
   object-position: center;
+}
+
+.vision-leader {
+  background-color: #b0b0b0;
+  margin: 0;
+  padding: 2rem;
+}
+
+/* STATEMENT OF FAITH */
+.statement-of-faith {
+  background-color: white;
+}
+
+.statement-of-faith h2 {
+  margin-bottom: 0;
+}
+
+.statement-of-faith-txt-wrapper p + p {
+  margin-top: 1rem;
+  color: rgb(118, 118, 118);
+}
+.statement-of-faith-txt-wrapper p {
+  color: rgb(118, 118, 118);
 }
 
 @media (max-width: 768px) {
@@ -254,7 +264,6 @@
   .leaders-img {
     display: none;
   }
-
   .vision-txt {
     padding: 0;
     margin: 0;
