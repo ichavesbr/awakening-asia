@@ -15,9 +15,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScreenResize = () => window.innerWidth > 768 && setMenuOpen(false)
+    const shouldOpenMenu = menuOpen && window.innerWidth < 775
     window.addEventListener("resize", handleScreenResize)
 
-    menuOpen ? document.body.classList.add("no-scroll") : document.body.classList.remove("no-scroll")
+    shouldOpenMenu ? document.body.classList.add("no-scroll") : document.body.classList.remove("no-scroll")
 
     // função de limpeza do useEffect
     return () => {
