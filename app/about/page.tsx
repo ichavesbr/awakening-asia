@@ -11,6 +11,7 @@ type Employee = {
   message?: string
   instagram?: string
   facebook?: string
+  youtube?: string
 }
 
 const employees: Employee[] = [
@@ -37,16 +38,12 @@ const employees: Employee[] = [
     role: "Revival Group Pastor",
     image: "/pastor-baruch.png",
     instagram: "baruchvanbeek",
+    facebook: "baruchvanbeek",
+    youtube: "user/bjvb1991",
   },
   {
     name: "Alisa Rene White",
     role: "Revival Group Pastor",
-    image: "/pastor-alisa.png",
-    facebook: "alisarene",
-  },
-  {
-    name: "Alisa Rene White",
-    role: "Designer UX",
     image: "/pastor-alisa.png",
     facebook: "alisarene",
   },
@@ -80,6 +77,16 @@ const SnsIcons = ({ employee }: { employee: Employee }) => (
           style={{ width: "30px", height: "30px" }}
           className={`${faFacebookF}-icon`}
         />
+      </a>
+    )}
+    {employee.youtube && (
+      <a
+        href={`https://youtube.com/${employee.facebook}`}
+        className="youtube-link"
+        aria-label={`Youtube of ${employee.name}`}
+        target="_blank"
+        rel="noopener noreferrer">
+        <FontAwesomeIcon icon={faYoutube} style={{ width: "30px", height: "30px" }} className={`${faYoutube}-icon`} />
       </a>
     )}
   </div>
@@ -190,17 +197,19 @@ export default function About() {
       </section>
 
       <section className="vision stadium">
-        <div className="vision-wrapper">
-          <div className="vision-img-wrapper">
-            <Image src="/stadium.png" alt="vision image" height={300} width={400} />
-          </div>
-          <div className="vision-txt">
-            <h3>Revival Meeting at the Stadium</h3>
-            <p>
-              We have received visions from God of a great harvest of souls through a stadium. Even in Europe, which,
-              like Japan, is often referred to as the graveyard of missions, many souls are being saved through annual
-              stadium events. We believe that something similar will happen in Japan.
-            </p>
+        <div className="section-wrapper">
+          <div className="vision-wrapper">
+            <div className="vision-img-wrapper">
+              <Image src="/stadium.png" alt="vision image" height={300} width={400} />
+            </div>
+            <div className="vision-txt">
+              <h3>Revival Meeting at the Stadium</h3>
+              <p>
+                We have received visions from God of a great harvest of souls through a stadium. Even in Europe, which,
+                like Japan, is often referred to as the graveyard of missions, many souls are being saved through annual
+                stadium events. We believe that something similar will happen in Japan.
+              </p>
+            </div>
           </div>
         </div>
       </section>
