@@ -193,10 +193,6 @@
   width: 400px;
 }
 
-/* .vision-wrapper + .vision-wrapper {
-  margin-top: 5rem;
-} */
-
 .vision-img-wrapper {
   display: flex;
   align-items: center;
@@ -279,7 +275,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    margin-left: 3rem;
+    margin-left: 1.5rem;
   }
   .small-card .team-image {
     border: none;
@@ -298,9 +294,6 @@
     margin: 0;
   }
   .vision-wrapper {
-    margin: 1rem;
-  }
-  .vision-wrapper + .vision-wrapper {
     margin: 1rem;
   }
 }
