@@ -1,0 +1,89 @@
+/* HOME - SECTION 1 (HERO)  */
+.home {
+  background-color: whitesmoke;
+}
+
+.home-section {
+  margin: 1rem 0;
+  display: flex;
+  height: 500px;
+  /* background-color: goldenrod; */
+}
+
+.a1 {
+  padding-left: 6rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(178, 178, 178);
+}
+
+.a1 .home-title {
+  font-size: 3rem;
+  text-align: justify;
+}
+
+.a1 .home-title h1 {
+  margin-bottom: 0.25rem;
+}
+
+.home-btns {
+  gap: 1rem;
+  display: flex;
+}
+
+.home-btns a {
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+section {
+  width: 100%;
+  padding: 2rem;
+}
+
+/* HOME - SECTION 2 */
+.home-section2-outer-wrapper {
+  width: 1200px;
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-section2-inner-wrapper {
+  /* background-color: lightcoral; */
+  gap: 2rem;
+  display: flex;
+  overflow: hidden;
+}
+
+.home-section2-btns-wrapper a {
+  border: 2px solid black;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  color: black;
+}
+
+.home-section2-img-wrapper img {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: right;
+}
+
+.home-section2-txt-wrapper,
+.home-section2-img-wrapper {
+  flex: 1;
+}
+
+.home-section2-txt-wrapper {
+  font-size: 1.25rem;
+  gap: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

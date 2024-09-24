@@ -1,33 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
-
+/* system-ui carrega mais rapido aparentemente , nao precisa fazer download de font, ja ta no pc/phone do usuario*/
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
   list-style-type: none;
   box-sizing: border-box;
-  font-family: "Lora", serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
   font-weight: 300;
   letter-spacing: 0.5px;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 main {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  background-color: purple;
-}
-
-section {
-  width: 100%;
-  padding: 2rem;
+  justify-content: center;
+  /* background-color: purple; */
 }
 
 .section-wrapper {
@@ -107,4 +96,10 @@ nav ul.nav-links li:not(.donate) a:hover::after {
 .donate a {
   color: black;
   font-weight: 400;
+}
+
+.home-section2-inner-wrapper-title {
+  text-align: center;
+  padding-bottom: 2.5rem;
+  font-size: 2.5rem;
 }
