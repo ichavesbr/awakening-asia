@@ -3,14 +3,15 @@
 import { Button } from "@/components/ui/button"
 import { BookOpen, Users, Calendar, MapPin, ChevronRight } from "lucide-react"
 
-export function BackgroundImageDesignRedesignedComponent() {
+export function SchoolAASM() {
   return (
     <section className="py-16 bg-gray-900 text-white relative min-h-screen flex items-center">
       <div className="absolute inset-0 bg-cover bg-center z-0" style={{ backgroundImage: "url('/school.png')" }}></div>
       <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-5xl font-bold mb-6">Awakening Asia School of Ministry</h2>
+          <p className="text-5xl  font-bold mb-6">Awakening Asia School of Ministry</p>
+
           <p className="text-xl mb-8">
             Raising up pioneers of the Gospel in Asia: Radical lovers of God who will powerfully advance the Kingdom.
           </p>

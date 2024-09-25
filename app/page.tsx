@@ -1,16 +1,13 @@
-import { AwakeningAsiaSchoolComponent } from "@/components/awakening-asia-school"
-import { BackgroundImageDesignRedesignedComponent } from "@/components/background-image-design-redesigned"
+import { SchoolAASM } from "@/components/school-aasm"
 import { DonationCards } from "@/components/donation-cards"
 
 export default function Home() {
   return (
     <>
       <DonationCards />
-      {/* <SecaoEscola /> */}
-      <BackgroundImageDesignRedesignedComponent />
+      <SchoolAASM />
 
-      {/*
-      <section className="home-section a1">
+      {/* <section className="home-section a1">
         <div className="section-wrapper">
           <div className="home-title">
             <h1>AWAKENING</h1>
