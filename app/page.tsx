@@ -1,10 +1,13 @@
+import { DonationCards } from "@/components/donation-cards"
 import Image from "next/image"
 
 export default function Home() {
   return (
     <>
-      <div className="home">
-        <section className="home-section a1">
+      <DonationCards />
+      {/*
+      <section className="home-section a1">
+        <div className="section-wrapper">
           <div className="home-title">
             <h1>AWAKENING</h1>
             <h3>ASIA/TOKYO</h3>
@@ -17,9 +20,10 @@ export default function Home() {
             <a href="#">Check our service</a>
             <a href="#">Who is Jesus?</a>
           </div>
-        </section>
+        </div>
+      </section> */}
 
-        <section className="home-section a2">
+      {/* <section className="home-section a2">
           <div className="home-section2-outer-wrapper">
             <div className="home-section2-inner-wrapper-title">
               <h3>God is Awakening His People in Asia</h3>
@@ -44,8 +48,7 @@ export default function Home() {
           </div>
         </section>
         <section className="home-section a3">ONLINE SERVICE</section>
-        <section className="home-section a4">SCHOOL</section>
-      </div>
+        <section className="home-section a4">SCHOOL</section> */}
     </>
   )
 }
