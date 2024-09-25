@@ -173,3 +173,13 @@ nav ul.nav-links li:not(.donate) a:hover::after {
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 768px) {
+  .title-section-school {
+    font-size: 2.5rem;
+  }
+  .subtitle-section-school {
+    font-size: 1.15rem;
+    line-height: 1.5rem;
+  }
+}

@@ -10,7 +10,7 @@ import { faBuildingColumns, faCreditCard } from "@fortawesome/free-solid-svg-ico
 export function DonationCards() {
   return (
     <section className="about">
-      <h2 className="text-3xl font-bold text-center mb-8">OFFERING to the ministry</h2>
+      <p className="text-3xl font-bold text-center mb-8">OFFERING TO THE MINISTRY</p>
       <div className="section-wrapper !block">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="flex flex-col">

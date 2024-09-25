@@ -10,12 +10,13 @@ export function SchoolAASM() {
       <div className="absolute inset-0 bg-black opacity-60 z-10"></div>
       <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <p className="text-5xl  font-bold mb-6">Awakening Asia School of Ministry</p>
+          <p className="text-5xl font-bold mb-6 title-section-school md:text-ellipsis">
+            Awakening Asia School of Ministry
+          </p>
 
-          <p className="text-xl mb-8">
+          <p className="text-xl mb-8 subtitle-section-school">
             Raising up pioneers of the Gospel in Asia: Radical lovers of God who will powerfully advance the Kingdom.
           </p>
-          <Button className="bg-[rgb(241,196,15)] text-gray-900 hover:bg-[rgb(221,176,0)]">Schedule a Visit</Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -54,6 +55,7 @@ export function SchoolAASM() {
 
         <div className="mt-16 text-center">
           <p className="text-xl mb-6">Join our vibrant learning community today!</p>
+          <Button className="bg-[rgb(241,196,15)] text-gray-900 hover:bg-[rgb(221,176,0)] mr-4">Schedule a Visit</Button>
           <Button
             variant="outline"
             className="border-[rgb(241,196,15)] text-[rgb(241,196,15)] hover:bg-[rgb(241,196,15)] hover:text-gray-900">
