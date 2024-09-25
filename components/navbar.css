@@ -9,7 +9,8 @@ header {
 
   top: 0;
   z-index: 1;
-  position: sticky;
+  position: relative;
+  width: 100%;
 }
 
 .icons {

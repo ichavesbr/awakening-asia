@@ -46,7 +46,7 @@ export function DonationCards() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-black">Donate with Card</Button>
+              <Button className="mx-auto bg-yellow-500 hover:bg-yellow-600 text-black">Donate with Card</Button>
             </CardFooter>
           </Card>
 
@@ -75,7 +75,7 @@ export function DonationCards() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-black">Donate with PayPal</Button>
+              <Button className="mx-auto bg-yellow-500 hover:bg-yellow-600 text-black">Donate with PayPal</Button>
             </CardFooter>
           </Card>
 
@@ -105,7 +105,7 @@ export function DonationCards() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button className="w-full bg-yellow-500 hover:bg-yellow-600 text-black">Copy Bank Details</Button>
+              <Button className="mx-auto bg-yellow-500 hover:bg-yellow-600 text-black">Copy Bank Details</Button>
             </CardFooter>
           </Card>
         </div>
