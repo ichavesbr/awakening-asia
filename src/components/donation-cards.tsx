@@ -6,8 +6,22 @@ import { CreditCard, Check, Smartphone } from "lucide-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPaypal } from "@fortawesome/free-brands-svg-icons"
 import { faBuildingColumns, faCreditCard } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
 
 export function DonationCards() {
+  const [buttonText, setButtonText] = useState("Copy Bank Details")
+
+  const handleClick = () => {
+    const textToCopy = `金融機関：住信SBIネット銀行（0038）
+                        支　　店：法人第一支店（106）
+                        科　　目：普通
+                        口座番号：1956105
+                        口座名義：シャ）アウェイクニングアジア`
+    navigator.clipboard.writeText(textToCopy)
+    setButtonText("Copied!")
+    setTimeout(() => setButtonText("Copy Bank Details"), 2000)
+  }
+
   return (
     <section className="about">
       <p className="text-3xl font-bold text-center mb-8">OFFERING TO THE MINISTRY</p>
@@ -46,7 +60,9 @@ export function DonationCards() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button className="mx-auto bg-yellow-500 hover:bg-yellow-600 text-black">Donate with Card</Button>
+              <a href="https://tithe.ly/give?c=2886012" target="_blank" rel="noopener noreferrer" className="mx-auto">
+                <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">Donate with Card</Button>
+              </a>
             </CardFooter>
           </Card>
 
@@ -75,7 +91,13 @@ export function DonationCards() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button className="mx-auto bg-yellow-500 hover:bg-yellow-600 text-black">Donate with PayPal</Button>
+              <a
+                href="https://www.paypal.com/paypalme/awakeningasia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mx-auto">
+                <Button className="bg-yellow-500 hover:bg-yellow-600 text-black">Donate with PayPal</Button>
+              </a>
             </CardFooter>
           </Card>
 
@@ -105,7 +127,9 @@ export function DonationCards() {
               </ul>
             </CardContent>
             <CardFooter>
-              <Button className="mx-auto bg-yellow-500 hover:bg-yellow-600 text-black">Copy Bank Details</Button>
+              <Button className="mx-auto bg-yellow-500 hover:bg-yellow-600 text-black" onClick={handleClick}>
+                {buttonText}
+              </Button>
             </CardFooter>
           </Card>
         </div>
