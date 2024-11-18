@@ -6,7 +6,13 @@ import Image from "next/image"
 import "./footer.css"
 
 const schoolLinks = ["What is AASM?", "Instructors", "Testimonies", "Study with us"]
-const usefulLinks = ["Home", "About us", "School", "Contact"]
+const usefulLinks = [
+  { page: "Home", link: "/" },
+  { page: "About us", link: "about" },
+  { page: "School", link: "school" },
+  { page: "Contact", link: "contact" },
+]
+
 const snsIcons = [
   {
     sns: "instagram",
@@ -52,7 +58,7 @@ const SchoolLinks = () => {
       <ul>
         {schoolLinks.map(link => (
           <li key={link}>
-            <Link href="#">{link}</Link>
+            <Link href={link}>{link}</Link>
           </li>
         ))}
       </ul>
@@ -65,9 +71,9 @@ const UsefulLinks = () => {
     <div className="card">
       <h2>USEFUL LINKS</h2>
       <ul>
-        {usefulLinks.map(link => (
+        {usefulLinks.map(({ page, link }) => (
           <li key={link}>
-            <Link href="#">{link}</Link>
+            <Link href={link}>{page}</Link>
           </li>
         ))}
       </ul>

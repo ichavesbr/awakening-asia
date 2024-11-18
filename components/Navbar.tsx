@@ -32,14 +32,14 @@ const Navbar = () => {
       {links.map(link => (
         <React.Fragment key={link}>
           {link === "donate" ? (
-            <li className="donate">
+            <li className="donate" onClick={handleMenu}>
               <Link href={`/${link}`} aria-label={`${link} link`}>
                 {link.toUpperCase()}
               </Link>
             </li>
           ) : (
-            <li>
-              <Link href={`/${link}`} aria-label={`${link} link`} onClick={handleMenu}>
+            <li onClick={handleMenu}>
+              <Link href={`/${link}`} aria-label={`${link} link`}>
                 {link.toUpperCase()}
               </Link>
             </li>
@@ -58,7 +58,7 @@ const Navbar = () => {
       </div>
 
       {!menuOpen && (
-        <Link href="/" className="icons donate">
+        <Link href="/donate" className="icons donate">
           DONATE
         </Link>
       )}

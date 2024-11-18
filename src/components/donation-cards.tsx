@@ -8,7 +8,7 @@ import { faPaypal } from "@fortawesome/free-brands-svg-icons"
 import { faBuildingColumns, faCreditCard } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
 
-export function DonationCards() {
+const DonationCards = () => {
   const [buttonText, setButtonText] = useState("Copy Bank Details")
 
   const handleClick = () => {
@@ -138,3 +138,5 @@ export function DonationCards() {
     </section>
   )
 }
+
+export { DonationCards }
