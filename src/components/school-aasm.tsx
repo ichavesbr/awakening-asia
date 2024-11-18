@@ -55,7 +55,9 @@ export function SchoolAASM() {
 
         <div className="mt-16 text-center">
           <p className="text-xl mb-6">Join our vibrant learning community today!</p>
-          <Button className="bg-[rgb(241,196,15)] text-gray-900 hover:bg-[rgb(221,176,0)] mr-4">Schedule a Visit</Button>
+          <Button className="bg-[rgb(241,196,15)] text-gray-900 hover:bg-[rgb(221,176,0)] mr-4 mb-4">
+            Schedule a Visit
+          </Button>
           <Button
             variant="outline"
             className="border-[rgb(241,196,15)] text-[rgb(241,196,15)] hover:bg-[rgb(241,196,15)] hover:text-gray-900">
