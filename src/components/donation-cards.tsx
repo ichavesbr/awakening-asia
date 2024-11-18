@@ -13,10 +13,11 @@ export function DonationCards() {
 
   const handleClick = () => {
     const textToCopy = `金融機関：住信SBIネット銀行（0038）
-                        支　　店：法人第一支店（106）
-                        科　　目：普通
-                        口座番号：1956105
-                        口座名義：シャ）アウェイクニングアジア`
+支　　店：法人第一支店（106）
+科　　目：普通
+口座番号：1956105
+口座名義：シャ）アウェイクニングアジア`
+
     navigator.clipboard.writeText(textToCopy)
     setButtonText("Copied!")
     setTimeout(() => setButtonText("Copy Bank Details"), 2000)
