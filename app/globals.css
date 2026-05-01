@@ -1,26 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+
+  --color-gold-300: #f0d080;
+  --color-gold-400: #e8bb55;
+  --color-gold-500: #d4a535;
+  --color-gold-600: #b8891e;
+
+  --color-dark-900: #080808;
+  --color-dark-800: #111111;
+  --color-dark-700: #1a1a1a;
+  --color-dark-600: #242424;
+  --color-dark-500: #303030;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    background: #080808;
+    scroll-behavior: smooth;
+  }
+  body {
+    background: #080808;
+    color: #e8e4dc;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility nav-link {
+  color: var(--color-stone-500);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--color-gold-400);
+  }
+}
+
+@utility section-label {
+  color: var(--color-gold-400);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.65rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+@utility gold-line {
+  &::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--color-gold-400);
+    margin-bottom: 1.5rem;
+  }
+}
+
+@utility vision-section {
+  border-top: 1px solid var(--color-dark-700);
+}
+
+@utility pastor-card {
+  background: var(--color-dark-800);
+  border: 1px solid var(--color-dark-600);
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-color: var(--color-gold-600);
+  }
+}
+
+@utility faith-paragraph {
+  border-left: 2px solid var(--color-dark-600);
+  padding-left: 1.5rem;
+  transition: border-color 0.3s;
+
+  &:hover {
+    border-left-color: var(--color-gold-400);
+  }
+}
+
+@utility social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--color-dark-500);
+  color: var(--color-stone-600);
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    border-color: var(--color-gold-400);
+    color: var(--color-gold-400);
+  }
+}
+
+@utility social-icon-sm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1px solid var(--color-dark-500);
+  color: var(--color-stone-600);
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    border-color: var(--color-gold-400);
+    color: var(--color-gold-400);
+  }
+}
+
+@utility placeholder-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-dark-700);
 }
