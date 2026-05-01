@@ -22,7 +22,7 @@ export default function NotFound() {
 
         {/* Description */}
         <p className="text-stone-400 font-light leading-relaxed mb-12">
-          The page you are looking for does not exist or may have been moved.
+          The page you are looking for does not exist.
         </p>
 
         {/* CTA */}
@@ -34,7 +34,7 @@ export default function NotFound() {
 
         {/* Gold line below */}
         <div className="flex justify-center mt-16">
-          <span className="block w-10 h-px bg-dark-600" />
+          <span className="block w-10 h-px bg-gold-400" />
         </div>
       </div>
     </section>
