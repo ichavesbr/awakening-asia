@@ -1,6 +1,6 @@
 import "./globals.css"
-// import Header from "../components/Header"
-// import Footer from "../components/Footer"
+import Header from "../components/Header"
+import Footer from "../components/Footer"
 
 export const metadata = {
   title: "Awakening Asia | Tokyo",
@@ -13,9 +13,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className="scroll-smooth">
       <body className="font-sans antialiased">
-        {/* <Header /> */}
+        <Header />
         <main className="pt-16">{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   )
