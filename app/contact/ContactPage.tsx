@@ -45,7 +45,7 @@ export default function ContactPage() {
 
       return
     }
-    
+
     setErrors({})
     setLoading(true)
     setTimeout(() => {

@@ -5,7 +5,7 @@ import StatementOfFaith from "../../components/StatementOfFaith"
 
 export const metadata = { title: "About | Awakening Asia Tokyo" }
 
-export default function AboutPage() {
+export default function About() {
   return (
     <>
       <AboutSection />
