@@ -342,7 +342,7 @@ export default function Lives() {
           <p className="text-stone-600 text-xs tracking-[0.3em] uppercase mb-10">Videos · Livestreams · Teachings</p>
 
           <a
-            href="https://www.youtube.com/@AwakeningAsiaTV"
+            href="https://www.youtube.com/AwakeningAsiaTV"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2.5 px-6 py-2.5 border border-gold-600 text-gold-400 text-xs tracking-widest uppercase font-medium transition-all duration-200 hover:bg-gold-500 hover:text-dark-900">
@@ -377,7 +377,7 @@ export default function Lives() {
 
           <div className="mt-10 text-center">
             <a
-              href="https://www.youtube.com/@AwakeningAsiaTV/videos"
+              href="https://www.youtube.com/AwakeningAsiaTV/videos"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-stone-500 text-xs tracking-widest uppercase hover:text-gold-400 transition-colors duration-200">
@@ -414,7 +414,7 @@ export default function Lives() {
 
           <div className="mt-10 text-center">
             <a
-              href="https://www.youtube.com/@AwakeningAsiaTV/shorts"
+              href="https://www.youtube.com/AwakeningAsiaTV/shorts"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-stone-500 text-xs tracking-widest uppercase hover:text-gold-400 transition-colors duration-200">
@@ -445,7 +445,7 @@ export default function Lives() {
 
           <div className="mt-10 text-center">
             <a
-              href="https://www.youtube.com/@AwakeningAsiaTV/streams"
+              href="https://www.youtube.com/AwakeningAsiaTV/streams"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-stone-500 text-xs tracking-widest uppercase hover:text-gold-400 transition-colors duration-200">
