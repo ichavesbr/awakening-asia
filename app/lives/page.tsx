@@ -4,42 +4,6 @@ import Image from "next/image"
 import { useEffect, useState } from "react"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
-
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-// LEMBRAR DE RESTRINGIR O USO DA API NO SITE DO GOOGLE CLOUD API
-
 const RECENT_VIDEOS = [
   {
     id: "dQw4w9WgXcQ",
@@ -157,10 +121,26 @@ interface Live extends Video {
 }
 
 // ─── Get videos functions ────────────────────────────────────────────────────────────────────
+async function getLastestLives() {
+  try {
+    const urlBase = "https://www.googleapis.com/youtube/v3/search?"
+    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=4&type=video&eventType=completed`
+    const res = await fetch(urlBase + urlQueries)
+
+    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
+
+    const data = await res.json()
+
+    return data.items
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 async function getLastestVideos() {
   try {
     const urlBase = "https://www.googleapis.com/youtube/v3/search?"
-    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=6`
+    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=8&type=video`
     const res = await fetch(urlBase + urlQueries)
 
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
@@ -184,7 +164,7 @@ function VideoCard({ video }) {
       href={`https://www.youtube.com/watch?v=${id}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
+      className="group flex flex-col h-full bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-dark-700">
         <Image
@@ -203,29 +183,33 @@ function VideoCard({ video }) {
       </div>
 
       {/* Info */}
-      <div className="p-5">
-        <h3 className="font-serif text-lg text-stone-100 font-light leading-snug mb-2 group-hover:text-gold-300 transition-colors duration-200">
+      <div className="p-5 flex flex-col flex-1">
+        <h3 className="font-serif text-lg text-stone-100 font-light leading-snug mb-2 group-hover:text-gold-300 transition-colors duration-200 line-clamp-2">
           {title}
         </h3>
-        <p className="text-stone-600 text-xs tracking-widest uppercase font-light">{date}</p>
+        <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{date}</p>
       </div>
     </a>
   )
 }
 
 // ─── Live Card ────────────────────────────────────────────────────────────────
-function LiveCard({ live }: { live: (typeof RECENT_LIVES)[number] }) {
+function LiveCard({ live }) {
+  const id = live.id.videoId
+  const title = live.snippet.title
+  const date = live.snippet.publishedAt
+
   return (
     <a
-      href={`https://www.youtube.com/watch?v=${live.id}`}
+      href={`https://www.youtube.com/watch?v=${id}`}
       target="_blank"
       rel="noopener noreferrer"
       className="group flex flex-col h-full bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-dark-700">
         <Image
-          src={`https://img.youtube.com/vi/${live.id}/maxresdefault.jpg`}
-          alt={live.title}
+          src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+          alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -238,16 +222,17 @@ function LiveCard({ live }: { live: (typeof RECENT_LIVES)[number] }) {
         </div>
         {/* Duration */}
         <span className="absolute bottom-3 right-3 bg-dark-900/85 text-stone-300 text-[0.65rem] tracking-wide px-2 py-0.5">
-          {live.duration}
+          {/* {duration} */}
+          {/* ARRUMAR AGORA */}
         </span>
       </div>
 
       {/* Info */}
       <div className="p-5 flex flex-col flex-1">
         <h3 className="font-serif text-lg text-stone-100 font-light leading-snug mb-2 group-hover:text-gold-300 transition-colors duration-200 line-clamp-2">
-          {live.title}
+          {title}
         </h3>
-        <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{live.date}</p>
+        <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{date}</p>
       </div>
     </a>
   )
@@ -292,11 +277,15 @@ function ShortCard({ short }: { short: (typeof RECENT_SHORTS)[number] }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Lives() {
   const [videos, setVideos] = useState([])
+  const [lives, setLives] = useState([])
 
   useEffect(() => {
     async function fetchData() {
-      const data = await getLastestVideos()
-      setVideos(data)
+      const dataVideos = await getLastestVideos()
+      const dataLives = await getLastestLives()
+
+      setVideos(dataVideos)
+      setLives(dataLives)
     }
 
     fetchData()
@@ -362,14 +351,11 @@ export default function Lives() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* {RECENT_VIDEOS.map((video, index) => (
-              <div key={video.id + video.title} className={index >= 3 ? "hidden md:block" : ""}>
-                <VideoCard video={video} videos={videos} />
-              </div>
-            ))} */}
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {videos.map((video, index) => (
-              <div key={video.id.videoId + video.snippet.title} className={index >= 3 ? "hidden md:block" : ""}>
+              <div
+                key={video.id.videoId + video.snippet.title}
+                className={`h-full${index >= 4 ? " hidden md:block" : ""}`}>
                 <VideoCard video={video} />
               </div>
             ))}
@@ -435,9 +421,9 @@ export default function Lives() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {RECENT_LIVES.map((live, index) => (
-              <div key={live.id + live.title} className={`h-full${index >= 3 ? " hidden md:block" : ""}`}>
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            {lives.map(live => (
+              <div key={live.id.videoId + live.snippet.title} className="h-full">
                 <LiveCard live={live} />
               </div>
             ))}
