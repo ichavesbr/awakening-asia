@@ -37,34 +37,6 @@ const RECENT_VIDEOS = [
   },
 ]
 
-const RECENT_SHORTS = [
-  {
-    id: "dQw4w9WgXcQ",
-    title: "God is Moving in Tokyo",
-    date: "April 25, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "A Word for This Generation",
-    date: "April 19, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Revival is Coming to Asia",
-    date: "April 12, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "He Called You by Name",
-    date: "April 5, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "The Harvest is Here",
-    date: "March 29, 2025",
-  },
-]
-
 const RECENT_LIVES = [
   {
     id: "dQw4w9WgXcQ",
@@ -124,7 +96,7 @@ interface Live extends Video {
 async function getLastestLives() {
   try {
     const urlBase = "https://www.googleapis.com/youtube/v3/search?"
-    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=4&type=video&eventType=completed`
+    const urlQueries = `key=${process.env.API_KEY}&channelId=${process.env.CHANNEL_ID}&part=snippet&order=date&maxResults=4&type=video&eventType=completed`
     const res = await fetch(urlBase + urlQueries)
 
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
@@ -134,13 +106,14 @@ async function getLastestLives() {
     return data.items
   } catch (error) {
     console.log(error)
+    return []
   }
 }
 
 async function getLastestVideos() {
   try {
     const urlBase = "https://www.googleapis.com/youtube/v3/search?"
-    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=8&type=video`
+    const urlQueries = `key=${process.env.API_KEY}&channelId=${process.env.CHANNEL_ID}&part=snippet&order=date&maxResults=8&type=video`
     const res = await fetch(urlBase + urlQueries)
 
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
@@ -150,6 +123,7 @@ async function getLastestVideos() {
     return data.items
   } catch (error) {
     console.log(error)
+    return []
   }
 }
 
@@ -233,42 +207,6 @@ function LiveCard({ live }) {
           {title}
         </h3>
         <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{date}</p>
-      </div>
-    </a>
-  )
-}
-
-// ─── Short Card ───────────────────────────────────────────────────────────────
-function ShortCard({ short }: { short: (typeof RECENT_SHORTS)[number] }) {
-  return (
-    <a
-      href={`https://www.youtube.com/shorts/${short.id}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
-      {/* Thumbnail — 9:16 portrait ratio */}
-      <div className="relative w-full overflow-hidden bg-dark-700" style={{ aspectRatio: "9/16", maxHeight: "360px" }}>
-        <Image
-          src={`https://img.youtube.com/vi/${short.id}/maxresdefault.jpg`}
-          alt={short.title}
-          fill
-          sizes="(max-width: 768px) 50vw, 25vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        {/* Play overlay */}
-        <div className="absolute inset-0 bg-dark-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div className="text-gold-400">
-            <PlayIcon />
-          </div>
-        </div>
-      </div>
-
-      {/* Info */}
-      <div className="p-4">
-        <h3 className="font-serif text-base text-stone-100 font-light leading-snug mb-1.5 group-hover:text-gold-300 transition-colors duration-200">
-          {short.title}
-        </h3>
-        <p className="text-stone-600 text-xs tracking-widest uppercase font-light">{short.date}</p>
       </div>
     </a>
   )
@@ -369,43 +307,6 @@ export default function Lives() {
               className="inline-flex items-center gap-2 text-stone-500 text-xs tracking-widest uppercase hover:text-gold-400 transition-colors duration-200">
               View all videos
               <span className="text-gold-600">→</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Shorts ──────────────────────────────────────────────────────── */}
-      <section className="py-24 vision-section">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-14">
-            <p className="section-label mb-4">Shorts</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-stone-100 font-light">
-              YouTube <em className="text-gold-400">Shorts</em>
-            </h2>
-          </div>
-
-          {/* Mobile: 2 cards only */}
-          <div className="grid grid-cols-2 gap-3 md:hidden">
-            {RECENT_SHORTS.slice(0, 2).map(short => (
-              <ShortCard key={short.id + short.title} short={short} />
-            ))}
-          </div>
-
-          {/* Desktop: 5-column grid */}
-          <div className="hidden md:grid md:grid-cols-5 gap-5 w-full">
-            {RECENT_SHORTS.map(short => (
-              <ShortCard key={short.id + short.title} short={short} />
-            ))}
-          </div>
-
-          <div className="mt-10 text-center">
-            <a
-              href="https://www.youtube.com/AwakeningAsiaTV/shorts"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-stone-500 text-xs tracking-widest uppercase hover:text-gold-400 transition-colors duration-200">
-              View all shorts
-              <span className="text-gold-600">&rarr;</span>
             </a>
           </div>
         </div>
