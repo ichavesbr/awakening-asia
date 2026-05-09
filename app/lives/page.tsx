@@ -1,128 +1,13 @@
-"use client"
-
-import Image from "next/image"
-import { useEffect, useState } from "react"
-import { getLatestLives, getLatestVideos } from "../lib/youtube"
 import type { YoutubeItem } from "../lib/types"
-
-// ─── Icons ────────────────────────────────────────────────────────────────────
-function PlayIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10" aria-hidden="true">
-      <path d="M8 5v14l11-7z" />
-    </svg>
-  )
-}
-
-function YouTubeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4" aria-hidden="true">
-      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6a3 3 0 0 0-2.1 2.1C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.2 3.5-6.2 3.5z" />
-    </svg>
-  )
-}
-
-// ─── Video Card ───────────────────────────────────────────────────────────────
-function VideoCard({ video }: { video: YoutubeItem }) {
-  const id = video.id.videoId
-  const title = video.snippet.title
-  const date = video.snippet.publishedAt
-
-  return (
-    <a
-      href={`https://www.youtube.com/watch?v=${id}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex flex-col h-full bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
-      {/* Thumbnail */}
-      <div className="relative aspect-video overflow-hidden bg-dark-700">
-        <Image
-          src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        {/* Play overlay */}
-        <div className="absolute inset-0 bg-dark-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div className="text-gold-400">
-            <PlayIcon />
-          </div>
-        </div>
-      </div>
-
-      {/* Info */}
-      <div className="p-5 flex flex-col flex-1">
-        <h3 className="font-serif text-lg text-stone-100 font-light leading-snug mb-2 group-hover:text-gold-300 transition-colors duration-200 line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{date}</p>
-      </div>
-    </a>
-  )
-}
-
-// ─── Live Card ────────────────────────────────────────────────────────────────
-function LiveCard({ live }: { live: YoutubeItem }) {
-  const id = live.id.videoId
-  const title = live.snippet.title
-  const date = live.snippet.publishedAt
-
-  return (
-    <a
-      href={`https://www.youtube.com/watch?v=${id}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex flex-col h-full bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
-      {/* Thumbnail */}
-      <div className="relative aspect-video overflow-hidden bg-dark-700">
-        <Image
-          src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, 25vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-        {/* Play overlay */}
-        <div className="absolute inset-0 bg-dark-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div className="text-gold-400">
-            <PlayIcon />
-          </div>
-        </div>
-        {/* Duration */}
-        <span className="absolute bottom-3 right-3 bg-dark-900/85 text-stone-300 text-[0.65rem] tracking-wide px-2 py-0.5">
-          {/* {duration} */}
-          {/* ARRUMAR AGORA */}
-        </span>
-      </div>
-
-      {/* Info */}
-      <div className="p-5 flex flex-col flex-1">
-        <h3 className="font-serif text-lg text-stone-100 font-light leading-snug mb-2 group-hover:text-gold-300 transition-colors duration-200 line-clamp-2">
-          {title}
-        </h3>
-        <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{date}</p>
-      </div>
-    </a>
-  )
-}
+import { getLatestLives, getLatestVideos } from "../lib/youtube"
+import { VideoCard } from "@/components/VideoCard"
+import { LiveCard } from "@/components/LiveCard"
+import { YouTubeIcon } from "@/components/YouTubeIcon"
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
-export default function Lives() {
-  const [videos, setVideos] = useState<YoutubeItem[]>([])
-  const [lives, setLives] = useState<YoutubeItem[]>([])
-
-  useEffect(() => {
-    async function fetchData() {
-      const dataVideos = await getLatestVideos()
-      const dataLives = await getLatestLives()
-
-      setVideos(dataVideos)
-      setLives(dataLives)
-    }
-
-    fetchData()
-  }, [])
+export default async function Lives() {
+  const videos = await getLatestVideos()
+  const lives = await getLatestLives()
 
   return (
     <main>
@@ -184,7 +69,7 @@ export default function Lives() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-            {videos.map((video, index) => (
+            {videos.map((video: YoutubeItem, index: number) => (
               <div
                 key={video.id.videoId + video.snippet.title}
                 className={`h-full${index >= 4 ? " hidden md:block" : ""}`}>
@@ -217,7 +102,7 @@ export default function Lives() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-            {lives.map(live => (
+            {lives.map((live: YoutubeItem) => (
               <div key={live.id.videoId + live.snippet.title} className="h-full">
                 <LiveCard live={live} />
               </div>
