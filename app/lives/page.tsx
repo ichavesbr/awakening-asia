@@ -96,7 +96,7 @@ interface Live extends Video {
 async function getLastestLives() {
   try {
     const urlBase = "https://www.googleapis.com/youtube/v3/search?"
-    const urlQueries = `key=${process.env.API_KEY}&channelId=${process.env.CHANNEL_ID}&part=snippet&order=date&maxResults=4&type=video&eventType=completed`
+    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=4&type=video&eventType=completed`
     const res = await fetch(urlBase + urlQueries)
 
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
@@ -113,7 +113,7 @@ async function getLastestLives() {
 async function getLastestVideos() {
   try {
     const urlBase = "https://www.googleapis.com/youtube/v3/search?"
-    const urlQueries = `key=${process.env.API_KEY}&channelId=${process.env.CHANNEL_ID}&part=snippet&order=date&maxResults=8&type=video`
+    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=8&type=video`
     const res = await fetch(urlBase + urlQueries)
 
     if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
@@ -228,7 +228,6 @@ export default function Lives() {
 
     fetchData()
   }, [])
-  console.log("videos fora do useEffect", videos)
 
   return (
     <main>
