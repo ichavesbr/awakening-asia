@@ -1,4 +1,4 @@
-import type { YoutubeItem } from "./types"
+import { YoutubeItem } from "./types"
 
 const API_KEY = process.env.API_KEY
 const CHANNEL_ID = process.env.CHANNEL_ID
