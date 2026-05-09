@@ -1,6 +1,16 @@
 import Image from "next/image"
 
-const VISIONS = [
+interface VisionType {
+  id: string
+  label: string
+  title: string[]
+  image: string
+  imageAlt: string
+  reverse: boolean
+  description: string
+}
+
+const VISIONS: VisionType[] = [
   {
     id: "church-planting",
     label: "Church Planting in Tokyo",
@@ -33,7 +43,7 @@ const VISIONS = [
   },
 ]
 
-function VisionItem({ vision, isLast }) {
+function VisionItem({ vision, isLast }: { vision: VisionType; isLast: boolean }) {
   const imageBlock = (
     <div className="relative w-full aspect-video bg-dark-700 border border-dark-600 overflow-hidden">
       <Image

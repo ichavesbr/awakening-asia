@@ -1,8 +1,8 @@
-import type { YoutubeItem } from "../lib/types"
 import { getLatestLives, getLatestVideos } from "../lib/youtube"
 import { VideoCard } from "@/components/VideoCard"
 import { LiveCard } from "@/components/LiveCard"
 import { YouTubeIcon } from "@/components/YouTubeIcon"
+import { YoutubeItem } from "../lib/types"
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default async function Lives() {

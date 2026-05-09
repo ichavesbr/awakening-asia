@@ -1,21 +1,29 @@
 import Link from "next/link"
+import type { ComponentType } from "react"
 import { InstagramIcon, FacebookIcon, YouTubeIcon, XIcon } from "./SocialIcons"
+import type { NavLink } from "@/app/lib/types"
 
-const USEFUL_LINKS = [
+interface SocialLink {
+  href: string
+  label: string
+  Icon: ComponentType
+}
+
+const USEFUL_LINKS: NavLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About us" },
   { href: "/school", label: "School" },
   { href: "/contact", label: "Contact" },
 ]
 
-const SCHOOL_LINKS = [
+const SCHOOL_LINKS: NavLink[] = [
   { href: "/school#about", label: "What is AASM?" },
   { href: "/school#instructors", label: "Instructors" },
   { href: "/school#testimonies", label: "Testimonies" },
   { href: "/school#apply", label: "Study with us" },
 ]
 
-const SOCIALS = [
+const SOCIALS: SocialLink[] = [
   { href: "https://www.instagram.com/awakeningasia", label: "Instagram", Icon: InstagramIcon },
   { href: "https://x.com/awakeningasia", label: "X", Icon: XIcon },
   { href: "https://www.facebook.com/awakeningasia.tokyo", label: "Facebook", Icon: FacebookIcon },

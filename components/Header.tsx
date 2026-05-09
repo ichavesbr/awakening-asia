@@ -2,11 +2,12 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import type { NavLink } from "@/app/lib/types"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: "/about", label: "About" },
     { href: "/school", label: "School" },
     { href: "/events", label: "Events" },

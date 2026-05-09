@@ -1,4 +1,4 @@
 # YOUTUBE API
-NEXT_PUBLIC_API_KEY=key_here
-NEXT_PUBLIC_CHANNEL_ID=key_here
+API_KEY=key_here
+CHANNEL_ID=key_here
 

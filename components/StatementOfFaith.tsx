@@ -1,3 +1,8 @@
+interface StatementsType {
+  text: string
+  refs: string
+}
+
 const STATEMENTS = [
   {
     text: "We believe that Almighty God is the Creator, who made the universe and everything in it by His hand. This God is the Trinity: Father, Son, and Holy Spirit, each distinct yet one God.",
@@ -33,7 +38,7 @@ const STATEMENTS = [
   },
 ]
 
-function FaithParagraph({ text, refs }) {
+function FaithParagraph({ text, refs }: StatementsType) {
   return (
     <div className="faith-paragraph">
       <p className="text-stone-400 leading-relaxed font-light">

@@ -1,3 +1,8 @@
+export interface NavLink {
+  href: string
+  label: string
+}
+
 export interface Thumbnail {
   url: string
   width: number

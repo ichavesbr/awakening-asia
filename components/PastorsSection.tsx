@@ -1,7 +1,24 @@
 import Image from "next/image"
 import { InstagramIcon, FacebookIcon, YouTubeIcon } from "./SocialIcons"
 
-const SENIOR_PASTORS = [
+interface SocialLinks {
+  instagram?: string
+  facebook?: string
+  youtube?: string
+}
+
+interface Pastor {
+  name: string
+  role: string
+  image: string
+  socials: SocialLinks
+}
+
+interface SeniorPastor extends Pastor {
+  quote: string
+}
+
+const SENIOR_PASTORS: SeniorPastor[] = [
   {
     name: "Masamitsu Morishita",
     role: "Founder & Senior Pastor",
@@ -26,7 +43,7 @@ const SENIOR_PASTORS = [
   },
 ]
 
-const REVIVAL_PASTORS = [
+const REVIVAL_PASTORS: Pastor[] = [
   {
     name: "Baruch van Beek",
     role: "Revival Group Pastor",
@@ -47,7 +64,7 @@ const REVIVAL_PASTORS = [
   },
 ]
 
-function SeniorPastorCard({ pastor }) {
+function SeniorPastorCard({ pastor }: { pastor: SeniorPastor }) {
   return (
     <div className="pastor-card p-8">
       {/* Image */}
@@ -95,7 +112,7 @@ function SeniorPastorCard({ pastor }) {
   )
 }
 
-function RevivalPastorCard({ pastor }) {
+function RevivalPastorCard({ pastor }: { pastor: Pastor }) {
   return (
     <div className="pastor-card p-6 flex gap-5 items-start">
       {/* Thumbnail */}
