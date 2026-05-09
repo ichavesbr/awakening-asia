@@ -2,67 +2,7 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-
-// ─── Data ────────────────────────────────────────────────────────────────────
-const RECENT_VIDEOS = [
-  {
-    id: "dQw4w9WgXcQ",
-    title: "The Fire of Revival — Sunday Service",
-    date: "April 27, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Building True Identity in Christ",
-    date: "April 20, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Worship Night — Presence of God",
-    date: "April 13, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Apostolic Leadership in Asia",
-    date: "April 6, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Intercession — Praying for Japan",
-    date: "March 30, 2025",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Kingdom Culture & the Gospel",
-    date: "March 23, 2025",
-  },
-]
-
-const RECENT_LIVES = [
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Sunday Gathering — Live from Tokyo",
-    date: "April 27, 2025",
-    duration: "1h 42min",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Revival Night Live",
-    date: "April 18, 2025",
-    duration: "2h 15min",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Prayer & Worship Stream",
-    date: "April 11, 2025",
-    duration: "58min",
-  },
-  {
-    id: "dQw4w9WgXcQ",
-    title: "Mid-Week Service — Live",
-    date: "April 2, 2025",
-    duration: "1h 10min",
-  },
-]
+import { getLastestLives, getLastestVideos } from "../lib/youtube"
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 function PlayIcon() {
@@ -90,41 +30,6 @@ interface Video {
 
 interface Live extends Video {
   duration: string
-}
-
-// ─── Get videos functions ────────────────────────────────────────────────────────────────────
-async function getLastestLives() {
-  try {
-    const urlBase = "https://www.googleapis.com/youtube/v3/search?"
-    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=4&type=video&eventType=completed`
-    const res = await fetch(urlBase + urlQueries)
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
-
-    const data = await res.json()
-
-    return data.items
-  } catch (error) {
-    console.log(error)
-    return []
-  }
-}
-
-async function getLastestVideos() {
-  try {
-    const urlBase = "https://www.googleapis.com/youtube/v3/search?"
-    const urlQueries = `key=${process.env.NEXT_PUBLIC_API_KEY}&channelId=${process.env.NEXT_PUBLIC_CHANNEL_ID}&part=snippet&order=date&maxResults=8&type=video`
-    const res = await fetch(urlBase + urlQueries)
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`)
-
-    const data = await res.json()
-
-    return data.items
-  } catch (error) {
-    console.log(error)
-    return []
-  }
 }
 
 // ─── Video Card ───────────────────────────────────────────────────────────────
