@@ -1,137 +1,120 @@
 import Link from "next/link"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faInstagram, faXTwitter, faFacebookF, faYoutube } from "@fortawesome/free-brands-svg-icons"
-import "@fortawesome/fontawesome-svg-core/styles.css"
-import Image from "next/image"
-import "./footer.css"
+import type { ComponentType } from "react"
+import { InstagramIcon, FacebookIcon, YouTubeIcon, XIcon } from "./SocialIcons"
+import type { NavLink } from "@/app/lib/types"
 
-const schoolLinks = ["What is AASM?", "Instructors", "Testimonies", "Study with us"]
-const usefulLinks = [
-  { page: "Home", link: "/" },
-  { page: "About us", link: "about" },
-  { page: "School", link: "school" },
-  { page: "Contact", link: "contact" },
+interface SocialLink {
+  href: string
+  label: string
+  Icon: ComponentType
+}
+
+const USEFUL_LINKS: NavLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About us" },
+  { href: "/school", label: "School" },
+  { href: "/contact", label: "Contact" },
 ]
 
-const snsIcons = [
-  {
-    sns: "instagram",
-    icon: faInstagram,
-    link: "https://www.instagram.com/awakeningasia",
-  },
-  {
-    sns: "x",
-    icon: faXTwitter,
-    link: "https://x.com/awakeningasia",
-  },
-  {
-    sns: "facebook",
-    icon: faFacebookF,
-    link: "https://www.facebook.com/awakeningasia.tokyo",
-  },
-  {
-    sns: "youtube",
-    icon: faYoutube,
-    link: "https://www.youtube.com/@AwakeningAsiaTV",
-  },
+const SCHOOL_LINKS: NavLink[] = [
+  { href: "/school#about", label: "What is AASM?" },
+  { href: "/school#instructors", label: "Instructors" },
+  { href: "/school#testimonies", label: "Testimonies" },
+  { href: "/school#apply", label: "Study with us" },
 ]
 
-const LogoCard = () => {
+const SOCIALS: SocialLink[] = [
+  { href: "https://www.instagram.com/awakeningasia", label: "Instagram", Icon: InstagramIcon },
+  { href: "https://x.com/awakeningasia", label: "X", Icon: XIcon },
+  { href: "https://www.facebook.com/awakeningasia.tokyo", label: "Facebook", Icon: FacebookIcon },
+  { href: "https://www.youtube.com/@AwakeningAsiaTV", label: "YouTube", Icon: YouTubeIcon },
+]
+
+export default function Footer() {
   return (
-    <>
-      <div className="card">
-        <div>
-          <Image src="/logo-flag.png" alt="logo flag footer" width={80} height={80} />
-          <Image src="/logo-text.png" alt="logo text footer" width={226} height={70} />
+    <footer className="bg-dark-900 border-t border-dark-600 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1.5fr] gap-10 md:gap-16 mb-16">
+          {/* Brand */}
+          <div>
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <div className="w-8 h-8 border border-gold-600 flex items-center justify-center">
+                <div className="w-3 h-3 bg-gold-500" />
+              </div>
+              <span className="font-serif uppercase text-stone-200 tracking-[0.22em] text-[0.75rem]">
+                Awakening Asia
+              </span>
+            </Link>
+            <p className="text-stone-500 text-sm leading-relaxed mb-1 font-light">
+              Spreading the light of Jesus Christ across Asia.
+            </p>
+            <p className="text-stone-600 text-sm font-light">Join us in our mission of love, faith, and hope.</p>
+          </div>
+
+          {/* Useful Links */}
+          <div>
+            <h4 className="section-label mb-5">Useful Links</h4>
+            <ul className="space-y-3">
+              {USEFUL_LINKS.map(({ href, label }) => (
+                <li key={href}>
+                  <Link href={href} className="text-stone-500 text-sm font-light hover:text-gold-400 transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* School Links */}
+          <div>
+            <h4 className="section-label mb-5">School — AASM</h4>
+            <ul className="space-y-3">
+              {SCHOOL_LINKS.map(({ href, label }) => (
+                <li key={href}>
+                  <Link href={href} className="text-stone-500 text-sm font-light hover:text-gold-400 transition-colors">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact & Socials */}
+          <div>
+            <h4 className="section-label mb-3">Our Address</h4>
+            <p className="text-stone-500 text-sm mb-0.5 font-light">イチロービル 4F, 2-23-9</p>
+            <p className="text-stone-500 text-sm mb-6 font-light">Kita-Ueno, Taito-ku, Tokyo</p>
+
+            <h4 className="section-label mb-3">Contact Us</h4>
+            <a
+              href="mailto:general@awakeningasia.org"
+              className="block mb-6 text-stone-500 text-sm font-light hover:text-gold-400 transition-colors">
+              general@awakeningasia.org
+            </a>
+
+            <h4 className="section-label mb-4">Social Media</h4>
+            <div className="flex gap-2 flex-wrap">
+              {SOCIALS.map(({ href, label, Icon }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="social-icon">
+                  <Icon />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
-        <p>Spreading the light of Jesus Christ across Asia.</p>
-        <p>Join us in our mission of love, faith, and hope.</p>
-      </div>
-    </>
-  )
-}
 
-const SchoolLinks = () => {
-  return (
-    <div className="card">
-      <h2>SCHOOL - AASM</h2>
-      <ul>
-        {schoolLinks.map(link => (
-          <li key={link}>
-            <Link href={link}>{link}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-const UsefulLinks = () => {
-  return (
-    <div className="card">
-      <h2>USEFUL LINKS</h2>
-      <ul>
-        {usefulLinks.map(({ page, link }) => (
-          <li key={link}>
-            <Link href={link}>{page}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
-const SocialMediaLinks = () => {
-  return (
-    <>
-      <h2>SOCIAL MEDIA</h2>
-      <div className="followUsWrapper">
-        {snsIcons.map(({ sns, icon, link }) => (
-          <a key={link} href={link} aria-label={`${sns} link`}>
-            <FontAwesomeIcon icon={icon} style={{ width: "25px", height: "25px" }} className={`${sns}-icon`} />
-          </a>
-        ))}
-      </div>
-    </>
-  )
-}
-
-const AddressAndSocialMediaLinks = () => {
-  return (
-    <>
-      <div className="card">
-        <h2 className="address">OUR ADDRESS</h2>
-        <span>イチロービル 4F, 2-23-9</span>
-        <span>Kita-Ueno, Taito-ku, Tokyo</span>
-
-        <h2 className="contactH2">CONTACT US</h2>
-        <span className="contact">general@awakeningasia.org</span>
-
-        <SocialMediaLinks />
-      </div>
-    </>
-  )
-}
-
-const Footer = () => {
-  return (
-    <>
-      <footer>
-        <div className="container">
-          <LogoCard />
-          <UsefulLinks />
-          <SchoolLinks />
-          <AddressAndSocialMediaLinks />
+        {/* Bottom bar */}
+        <div className="border-t border-dark-600 pt-8 flex flex-col md:flex-row justify-between items-center gap-3">
+          <p className="text-stone-700 uppercase tracking-[0.15em] text-[0.65rem]">© 2026 Awakening Asia Tokyo</p>
+          <p className="text-stone-700 text-[0.65rem]">Created by Igor Chaves Donega</p>
         </div>
-      </footer>
-
-      <aside>
-        <div className="copyright">
-          <p>&copy; 2024 Copyright - Created by Igor Chaves Donega</p>
-        </div>
-      </aside>
-    </>
+      </div>
+    </footer>
   )
 }
-
-export default Footer
