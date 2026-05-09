@@ -2,7 +2,8 @@
 
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { getLastestLives, getLastestVideos } from "../lib/youtube"
+import { getLatestLives, getLatestVideos } from "../lib/youtube"
+import type { YoutubeItem } from "../lib/types"
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 function PlayIcon() {
@@ -21,19 +22,8 @@ function YouTubeIcon() {
   )
 }
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-interface Video {
-  id: string
-  title: string
-  date: string
-}
-
-interface Live extends Video {
-  duration: string
-}
-
 // ─── Video Card ───────────────────────────────────────────────────────────────
-function VideoCard({ video }) {
+function VideoCard({ video }: { video: YoutubeItem }) {
   const id = video.id.videoId
   const title = video.snippet.title
   const date = video.snippet.publishedAt
@@ -73,7 +63,7 @@ function VideoCard({ video }) {
 }
 
 // ─── Live Card ────────────────────────────────────────────────────────────────
-function LiveCard({ live }) {
+function LiveCard({ live }: { live: YoutubeItem }) {
   const id = live.id.videoId
   const title = live.snippet.title
   const date = live.snippet.publishedAt
@@ -119,13 +109,13 @@ function LiveCard({ live }) {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function Lives() {
-  const [videos, setVideos] = useState([])
-  const [lives, setLives] = useState([])
+  const [videos, setVideos] = useState<YoutubeItem[]>([])
+  const [lives, setLives] = useState<YoutubeItem[]>([])
 
   useEffect(() => {
     async function fetchData() {
-      const dataVideos = await getLastestVideos()
-      const dataLives = await getLastestLives()
+      const dataVideos = await getLatestVideos()
+      const dataLives = await getLatestLives()
 
       setVideos(dataVideos)
       setLives(dataLives)
