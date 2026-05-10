@@ -7,11 +7,11 @@ const UPCOMING_EVENTS = [
   {
     id: 1,
     label: "Conference",
-    title: "Awakening Asia Summit 2025",
+    title: "Awakening Asia Summit 2026",
     subtitle: "A gathering of apostolic leaders across the continent",
-    date: "2025-08-15",
-    displayDate: "August 15–17",
-    year: "2025",
+    date: "2026-08-15",
+    displayDate: "August 15-17",
+    year: "2026",
     time: "10:00 AM",
     location: "Tokyo, Japan",
     venue: "Shibuya Stream Hall",
@@ -25,9 +25,9 @@ const UPCOMING_EVENTS = [
     label: "Worship Night",
     title: "Fire & Glory — Worship Night",
     subtitle: "An evening of encounter and intercession",
-    date: "2025-06-20",
+    date: "2026-06-20",
     displayDate: "June 20",
-    year: "2025",
+    year: "2026",
     time: "7:00 PM",
     location: "Tokyo, Japan",
     venue: "Shinjuku Chapel",
@@ -41,9 +41,9 @@ const UPCOMING_EVENTS = [
     label: "School",
     title: "School of the Prophets — Cohort III",
     subtitle: "Equipping the prophetic voice of this generation",
-    date: "2025-07-05",
+    date: "2026-07-05",
     displayDate: "July 5–6",
-    year: "2025",
+    year: "2026",
     time: "9:00 AM",
     location: "Online & Tokyo",
     venue: "Hybrid",
@@ -56,9 +56,9 @@ const UPCOMING_EVENTS = [
     label: "Outreach",
     title: "Streets of Harajuku — Gospel Mission",
     subtitle: "Taking the Gospel to the streets",
-    date: "2025-07-19",
+    date: "2026-07-19",
     displayDate: "July 19",
-    year: "2025",
+    year: "2026",
     time: "2:00 PM",
     location: "Tokyo, Japan",
     venue: "Harajuku Station",
@@ -403,15 +403,7 @@ export default function EventsPage() {
   return (
     <main>
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[70vh] flex items-center justify-center pt-16 overflow-hidden">
-        {/* SVG noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-
+      <section className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -420,22 +412,14 @@ export default function EventsPage() {
           }}
         />
 
-        {/* Crosshair lines */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-px h-72 bg-linear-to-b from-transparent via-gold-600/15 to-transparent" />
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="h-px w-72 bg-linear-to-r from-transparent via-gold-600/15 to-transparent" />
-        </div>
-
         {/* Corner brackets */}
-        <div className="absolute top-20 left-8 w-14 h-14 border-l border-t border-gold-600/20" />
-        <div className="absolute top-20 right-8 w-14 h-14 border-r border-t border-gold-600/20" />
-        <div className="absolute bottom-8 left-8 w-14 h-14 border-l border-b border-gold-600/20" />
-        <div className="absolute bottom-8 right-8 w-14 h-14 border-r border-b border-gold-600/20" />
+        <div className="absolute top-14 left-8 w-14 h-14 border-l border-t border-gold-600/25" />
+        <div className="absolute top-14 right-8 w-14 h-14 border-r border-t border-gold-600/25" />
+        <div className="absolute bottom-14 left-8 w-14 h-14 border-l border-b border-gold-600/25" />
+        <div className="absolute bottom-14 right-8 w-14 h-14 border-r border-b border-gold-600/25" />
 
         {/* Content */}
-        <div className="relative text-center max-w-3xl px-6">
+        <div className="relative text-center max-w-3xl px-6 py-20">
           <p className="section-label mb-8">Gatherings · Conferences · Outreach</p>
 
           <h1 className="font-serif text-6xl md:text-8xl text-stone-100 leading-none mb-6 font-light">
@@ -444,7 +428,7 @@ export default function EventsPage() {
             <em className="text-gold-400 italic">Encounter</em>
           </h1>
 
-          <p className="text-stone-600 text-xs tracking-[0.3em] uppercase mb-4">Asia · 2025</p>
+          <p className="text-stone-600 text-xs tracking-[0.3em] uppercase mb-4">Asia · 2026</p>
           <p className="text-stone-500 text-sm font-light max-w-md mx-auto leading-relaxed">
             Gatherings designed to shift atmospheres, release the Kingdom, and unite the body of Christ across the
             nations.
@@ -453,9 +437,9 @@ export default function EventsPage() {
       </section>
 
       {/* ── Featured Event ─────────────────────────────────────────────────── */}
-      <section className="py-16 vision-section">
+      <section className="py-24 vision-section">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-10">
+          <div className="mb-14">
             <p className="section-label mb-4">Featured · Next Major Gathering</p>
             <h2 className="font-serif text-4xl md:text-5xl text-stone-100 font-light">
               Don&apos;t <em className="text-gold-400">Miss It</em>
@@ -469,8 +453,8 @@ export default function EventsPage() {
       {/* ── Upcoming Events ───────────────────────────────────────────────── */}
       <section className="py-24 vision-section">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-10">
-            <p className="section-label mb-4">Schedule · 2025</p>
+          <div className="mb-14">
+            <p className="section-label mb-4">Schedule · 2026</p>
             <h2 className="font-serif text-4xl md:text-5xl text-stone-100 font-light">
               Upcoming <em className="text-gold-400">Events</em>
             </h2>
@@ -496,7 +480,7 @@ export default function EventsPage() {
       {/* ── Past Events ───────────────────────────────────────────────────── */}
       <section className="py-24 vision-section">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-10">
+          <div className="mb-14">
             <p className="section-label mb-4">Archive</p>
             <h2 className="font-serif text-4xl md:text-5xl text-stone-100 font-light">
               Past <em className="text-gold-400">Gatherings</em>
