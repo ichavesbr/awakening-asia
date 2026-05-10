@@ -12,31 +12,15 @@ export default async function Lives() {
   return (
     <main>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[70vh] flex items-center justify-center pt-16 overflow-hidden">
-        {/* SVG texture */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
-        {/* Vertical gold line */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-px h-72 bg-linear-to-b from-transparent via-gold-600/15 to-transparent" />
-        </div>
-        {/* Horizontal gold line */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="h-px w-72 bg-linear-to-r from-transparent via-gold-600/15 to-transparent" />
-        </div>
-
+      <section className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Corner bracket decorators */}
-        <div className="absolute top-20 left-8 w-14 h-14 border-l border-t border-gold-600/20" />
-        <div className="absolute top-20 right-8 w-14 h-14 border-r border-t border-gold-600/20" />
-        <div className="absolute bottom-8 left-8 w-14 h-14 border-l border-b border-gold-600/20" />
-        <div className="absolute bottom-8 right-8 w-14 h-14 border-r border-b border-gold-600/20" />
+        <div className="absolute top-14 left-8 w-14 h-14 border-l border-t border-gold-600/25" />
+        <div className="absolute top-14 right-8 w-14 h-14 border-r border-t border-gold-600/25" />
+        <div className="absolute bottom-14 left-8 w-14 h-14 border-l border-b border-gold-600/25" />
+        <div className="absolute bottom-14 right-8 w-14 h-14 border-r border-b border-gold-600/25" />
 
         {/* Content */}
-        <div className="relative text-center max-w-3xl px-6">
+        <div className="relative text-center max-w-3xl px-6 py-20">
           <p className="section-label mb-8">YouTube · Teachings &amp; Worship</p>
 
           <h1 className="font-serif text-6xl md:text-8xl text-stone-100 leading-none mb-6 font-light">
