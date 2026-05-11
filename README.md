@@ -1,3 +1,11 @@
+## Project
+
+Modern institutional website developed for the Ueno-based church Awakening Asia.
+
+The project was rebuilt from scratch with a focus on performance, maintainability, responsive design, and content accessibility. It centralizes the church’s online presence by providing information about the ministry, events, livestreams, and media content through direct integration with the YouTube Data API.
+
+The website was designed with a component-based architecture using the Next.js App Router, emphasizing scalability, clean UI composition, and production-ready frontend practices.
+
 ## Overview
 
 Complete rebuild of the Awakening Asia website from scratch. The previous version was a basic Next.js site. This new version is a fully redesigned, production-ready website with a modern stack, YouTube API integration, form validation, unit tests, and a componentized architecture.
