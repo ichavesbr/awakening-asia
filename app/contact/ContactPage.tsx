@@ -60,7 +60,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-dark-900">
       {/* Hero */}
-      <section className="pt-36 pb-20 border-b border-dark-600">
+      <section className="py-24 border-b border-dark-600">
         <div className="max-w-3xl mx-auto px-6">
           <p className="section-label mb-4">Get in Touch</p>
           <h1 className="font-serif text-5xl md:text-7xl text-stone-100 font-light leading-[1.1]">

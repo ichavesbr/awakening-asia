@@ -82,7 +82,8 @@ export default function Footer() {
           {/* Contact & Socials */}
           <div>
             <h4 className="section-label mb-3">Our Address</h4>
-            <p className="text-stone-500 text-sm mb-0.5 font-light">イチロービル 4F, 2-23-9</p>
+            <p className="text-stone-500 text-sm mb-0.5 font-light">〒110-0014</p>
+            <p className="text-stone-500 text-sm mb-0.5 font-light">Ichiro Building 4F, 2-23-9</p>
             <p className="text-stone-500 text-sm mb-6 font-light">Kita-Ueno, Taito-ku, Tokyo</p>
 
             <h4 className="section-label mb-3">Contact Us</h4>

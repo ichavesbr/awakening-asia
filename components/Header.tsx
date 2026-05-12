@@ -56,11 +56,11 @@ export default function Header() {
       {menuOpen && (
         <div className="md:hidden flex flex-col bg-dark-800 border-t border-dark-600 px-6 py-6 gap-4">
           {navLinks.map(({ href, label }) => (
-            <Link key={href} href={href} className="nav-link block py-1">
+            <Link key={href} href={href} className="nav-link block py-1" onClick={() => setMenuOpen(false)}>
               {label}
             </Link>
           ))}
-          <Link href="/donate" className="nav-link block py-1 text-gold-400">
+          <Link href="/donate" className="nav-link block py-1 text-gold-400" onClick={() => setMenuOpen(false)}>
             Donate
           </Link>
         </div>
