@@ -196,8 +196,6 @@ export default function Home() {
         <div className="absolute bottom-14 right-8 w-14 h-14 border-r border-b border-gold-600/25 pointer-events-none" />
 
         <div className="relative text-center max-w-3xl px-6 py-20">
-          <p className="section-label mb-8">Tokyo, Japan</p>
-
           <h1 className="font-serif text-6xl md:text-8xl text-stone-100 leading-none mb-6 font-light">
             Asia is
             <br />
