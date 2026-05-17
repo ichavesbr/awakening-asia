@@ -1,3 +1,4 @@
+import { cacheLife } from "next/cache"
 import { YoutubeItem } from "./types"
 
 const API_KEY = process.env.API_KEY
@@ -9,10 +10,14 @@ const videosUrlQueries = "maxResults=8&type=video"
 const livesUrlQueries = "maxResults=4&type=video&eventType=completed"
 
 const fetchYoutubeData = async (urlQueries: string) => {
+  "use cache"
+  cacheLife("hours")
+
+  // Simula atraso de 1 segundo
+  await new Promise(resolve => setTimeout(resolve, 3000))
+
   try {
-    const res = await fetch(baseUrl + urlQueries, {
-      next: { revalidate: 3600 }, // save fetch on cache for 1 hour
-    })
+    const res = await fetch(baseUrl + urlQueries)
 
     if (!res.ok) {
       const body = await res.text()

@@ -1,13 +1,13 @@
-import { getLatestLives, getLatestVideos } from "../lib/youtube"
+import { getLatestVideos } from "../lib/youtube"
 import { VideoCard } from "@/components/VideoCard"
 import { LiveCard } from "@/components/LiveCard"
 import { YouTubeIcon } from "@/components/YouTubeIcon"
 import { YoutubeItem } from "../lib/types"
+import { Suspense } from "react"
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default async function Lives() {
   const videos = await getLatestVideos()
-  const lives = await getLatestLives()
 
   return (
     <main>
@@ -85,13 +85,16 @@ export default async function Lives() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+          {/* <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
             {lives.map((live: YoutubeItem) => (
               <div key={live.id.videoId + live.snippet.title} className="h-full">
                 <LiveCard live={live} />
               </div>
             ))}
-          </div>
+          </div> */}
+          <Suspense fallback={<div>loading...</div>}>
+            <LiveCard />
+          </Suspense>
 
           <div className="mt-10 text-center">
             <a
