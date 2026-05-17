@@ -1,6 +1,8 @@
 import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
+  cacheComponents: true,
+
   // Necessary for accepting youtube API imagens
   images: {
     remotePatterns: [
