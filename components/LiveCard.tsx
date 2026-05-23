@@ -1,6 +1,6 @@
 import Image from "next/image"
 import type { YoutubeItem } from "@/app/lib/types"
-import { getLatestLives } from "@/app/lib/youtube"
+import { getLatestLives } from "@/app/lib/youtubeData"
 
 export async function LiveCard() {
   const lives = await getLatestLives()

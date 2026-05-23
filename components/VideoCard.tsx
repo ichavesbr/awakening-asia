@@ -1,6 +1,6 @@
 import Image from "next/image"
 import type { YoutubeItem } from "@/app/lib/types"
-import { getLatestVideos } from "@/app/lib/youtube"
+import { getLatestVideos } from "@/app/lib/youtubeData"
 
 export async function VideoCard() {
   const videos = await getLatestVideos()
@@ -13,7 +13,7 @@ export async function VideoCard() {
         const date = video.snippet.publishedAt
 
         return (
-          <div key={video.id.videoId + video.snippet.title} className={`h-full${index >= 4 ? " hidden md:block" : ""}`}>
+          <div key={id} className={`h-full${index >= 4 ? " hidden md:block" : ""}`}>
             <a
               href={`https://www.youtube.com/watch?v=${id}`}
               target="_blank"

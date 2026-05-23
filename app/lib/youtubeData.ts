@@ -13,16 +13,14 @@ const fetchYoutubeData = async (urlQueries: string) => {
   "use cache"
   cacheLife("hours")
 
-  // Simula atraso de 1 segundo
-  await new Promise(resolve => setTimeout(resolve, 3000))
-
   try {
     const res = await fetch(baseUrl + urlQueries)
 
     if (!res.ok) {
-      const body = await res.text()
-      console.error("[youtube] status:", res.status, body)
-      throw new Error("Failed to fetch YouTube data")
+      const data = await res.json()
+      console.error("status: ", res.status)
+      console.error("message: ", data?.error?.message)
+      throw new Error(`Erro HTTP: ${res.status}`)
     }
 
     const data = await res.json()
@@ -30,7 +28,7 @@ const fetchYoutubeData = async (urlQueries: string) => {
 
     return items
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return []
   }
 }
