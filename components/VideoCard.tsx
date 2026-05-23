@@ -7,49 +7,52 @@ export async function VideoCard() {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-      {videos.map((video: YoutubeItem, index: number) => {
-        const id = video.id.videoId
-        const title = video.snippet.title
-        const date = video.snippet.publishedAt
+      {videos
+        .filter((video: YoutubeItem) => !video.snippet.title.startsWith("Awakening Tokyo Church Sunday Service"))
+        .slice(0, 8)
+        .map((video: YoutubeItem, index: number) => {
+          const id = video.id.videoId
+          const title = video.snippet.title
+          const date = video.snippet.publishedAt
 
-        return (
-          <div key={id} className={`h-full${index >= 4 ? " hidden md:block" : ""}`}>
-            <a
-              href={`https://www.youtube.com/watch?v=${id}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex flex-col h-full bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
-              {/* Thumbnail */}
-              <div className="relative aspect-video overflow-hidden bg-dark-700">
-                <Image
-                  src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
-                  alt={title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+          return (
+            <div key={id} className={`h-full${index >= 4 ? " hidden md:block" : ""}`}>
+              <a
+                href={`https://www.youtube.com/watch?v=${id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col h-full bg-dark-800 border border-dark-600 hover:border-gold-600 transition-colors duration-300">
+                {/* Thumbnail */}
+                <div className="relative aspect-video overflow-hidden bg-dark-700">
+                  <Image
+                    src={`https://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+                    alt={title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
 
-                {/* Play overlay */}
-                <div className="absolute inset-0 bg-dark-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="text-gold-400">
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10" aria-hidden="true">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
+                  {/* Play overlay */}
+                  <div className="absolute inset-0 bg-dark-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="text-gold-400">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10" aria-hidden="true">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Info */}
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="font-serif text-lg text-stone-100 font-light leading-snug mb-2 group-hover:text-gold-300 transition-colors duration-200 line-clamp-2">
-                  {title}
-                </h3>
-                <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{date}</p>
-              </div>
-            </a>
-          </div>
-        )
-      })}
+                {/* Info */}
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-serif text-lg text-stone-100 font-light leading-snug mb-2 group-hover:text-gold-300 transition-colors duration-200 line-clamp-2">
+                    {title}
+                  </h3>
+                  <p className="text-stone-600 text-xs tracking-widest uppercase font-light mt-auto">{date}</p>
+                </div>
+              </a>
+            </div>
+          )
+        })}
     </div>
   )
 }
