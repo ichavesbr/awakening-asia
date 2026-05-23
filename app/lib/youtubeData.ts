@@ -6,7 +6,7 @@ const CHANNEL_ID = process.env.CHANNEL_ID
 
 const baseUrl = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet&order=date&`
 
-const videosUrlQueries = "maxResults=8&type=video"
+const videosUrlQueries = "maxResults=20&type=video"
 const livesUrlQueries = "maxResults=4&type=video&eventType=completed"
 
 const fetchYoutubeData = async (urlQueries: string) => {

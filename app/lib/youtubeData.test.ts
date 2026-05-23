@@ -71,7 +71,7 @@ describe("getLatestVideos", () => {
     const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ items: mockItems }), { status: 200 }))
     vi.stubGlobal("fetch", fetchMock)
     await getLatestVideos()
-    expect(fetchMock).toHaveBeenCalledWith(expect.stringContaining("maxResults=8&type=video"))
+    expect(fetchMock).toHaveBeenCalledWith(expect.stringContaining("maxResults=20&type=video"))
   })
 })
 
