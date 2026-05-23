@@ -112,6 +112,14 @@ function getDaysUntil(dateStr: string): number {
   return Math.max(0, Math.round((target.getTime() - now.getTime()) / 86_400_000))
 }
 
+function useDaysUntil(dateStr: string): number | null {
+  const [days, setDays] = useState<number | null>(null)
+  useEffect(() => {
+    setDays(getDaysUntil(dateStr))
+  }, [dateStr])
+  return days
+}
+
 const TAG_COLORS: Record<string, string> = {
   Worship: "border-gold-600/40 text-gold-400",
   Teaching: "border-stone-600/40 text-stone-400",
@@ -222,7 +230,7 @@ function CalendarIcon() {
 
 // ─── Featured Event Card ──────────────────────────────────────────────────────
 function FeaturedCard({ event }: { event: (typeof UPCOMING_EVENTS)[number] }) {
-  const days = getDaysUntil(event.date)
+  const days = useDaysUntil(event.date)
 
   return (
     <div className="relative bg-dark-800 border border-gold-600/30 overflow-hidden">
@@ -247,7 +255,7 @@ function FeaturedCard({ event }: { event: (typeof UPCOMING_EVENTS)[number] }) {
           <div className="flex items-center gap-3 mb-6">
             <span className="text-gold-400 text-[0.6rem] tracking-[0.3em] uppercase">{event.label}</span>
             <div className="flex-1 h-px bg-gold-600/20" />
-            {days > 0 && (
+            {days !== null && days > 0 && (
               <span className="text-stone-500 text-[0.6rem] tracking-widest uppercase">
                 {days} day{days !== 1 ? "s" : ""} to go
               </span>
@@ -312,7 +320,7 @@ function FeaturedCard({ event }: { event: (typeof UPCOMING_EVENTS)[number] }) {
 
 // ─── Event Row ────────────────────────────────────────────────────────────────
 function EventRow({ event, index }: { event: (typeof UPCOMING_EVENTS)[number]; index: number }) {
-  const days = getDaysUntil(event.date)
+  const days = useDaysUntil(event.date)
 
   return (
     <div className="group grid grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-start py-8 border-b border-dark-600 hover:border-gold-600/30 transition-colors duration-300">
@@ -355,18 +363,19 @@ function EventRow({ event, index }: { event: (typeof UPCOMING_EVENTS)[number]; i
 
       {/* Days badge */}
       <div className="text-right shrink-0">
-        {days > 0 ? (
-          <div className="inline-flex flex-col items-center bg-dark-700 border border-dark-500 group-hover:border-gold-600/20 transition-colors duration-300 px-4 py-3">
-            <span className="font-serif text-2xl text-stone-200 leading-none">{days}</span>
-            <span className="text-stone-600 text-[0.5rem] tracking-widest uppercase mt-0.5">
-              day{days !== 1 ? "s" : ""}
+        {days !== null &&
+          (days > 0 ? (
+            <div className="inline-flex flex-col items-center bg-dark-700 border border-dark-500 group-hover:border-gold-600/20 transition-colors duration-300 px-4 py-3">
+              <span className="font-serif text-2xl text-stone-200 leading-none">{days}</span>
+              <span className="text-stone-600 text-[0.5rem] tracking-widest uppercase mt-0.5">
+                day{days !== 1 ? "s" : ""}
+              </span>
+            </div>
+          ) : (
+            <span className="text-[0.6rem] tracking-widest uppercase text-gold-400 border border-gold-600/30 px-3 py-1.5">
+              Today
             </span>
-          </div>
-        ) : (
-          <span className="text-[0.6rem] tracking-widest uppercase text-gold-400 border border-gold-600/30 px-3 py-1.5">
-            Today
-          </span>
-        )}
+          ))}
       </div>
     </div>
   )
