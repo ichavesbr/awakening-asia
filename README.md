@@ -1,14 +1,12 @@
-## Project
+# Awakening Asia
 
-Modern institutional website developed for the Ueno-based church Awakening Asia.
+Institutional website for Awakening Asia, a church based in Ueno, Japan.
 
-The project was rebuilt from scratch with a focus on performance, maintainability, responsive design, and content accessibility. It centralizes the church’s online presence by providing information about the ministry, events, livestreams, and media content through direct integration with the YouTube Data API.
+Complete rebuild of the previous version, which was a basic Next.js site. This new version is a fully redesigned, production-ready website built from scratch.
 
-The website was designed with a component-based architecture using the Next.js App Router, emphasizing scalability, clean UI composition, and production-ready frontend practices.
+The rebuild focused on performance, maintainability, responsive design, and content accessibility. It centralizes the church's online presence with information about the ministry, events, livestreams, and media content through direct integration with the YouTube Data API. 
 
-## Overview
-
-Complete rebuild of the Awakening Asia website from scratch. The previous version was a basic Next.js site. This new version is a fully redesigned, production-ready website with a modern stack, YouTube API integration, form validation, unit tests, and a componentized architecture.
+---
 
 ## Stack
 
@@ -19,38 +17,71 @@ Complete rebuild of the Awakening Asia website from scratch. The previous versio
 | Validation | Zod v4 |
 | Testing | Vitest |
 | Language | TypeScript |
+| Analytics | Vercel Analytics + Speed Insights |
+
+---
 
 ## Pages
 
 ### `/` — Home
 - Animated hero section with parallax image
 - Scroll-triggered `FadeIn` animations via `IntersectionObserver`
-- Sections for vision, ministry overview and call-to-action links
+- Sections for vision, ministry overview, and call-to-action links
 
 ### `/about`
 - Modular sections: `VisionSection`, `PastorsSection`, `StatementOfFaith`, `AboutSection`
 
 ### `/contact`
-- Contact form with **client-side Zod validation**
+- Contact form with client-side Zod validation
 - Fields: name, email, subject, message — all with inline error feedback
 
 ### `/events`
-- Upcoming events listing with date, time, location, venue and tags
+- Upcoming events listing with date, time, location, venue, and tags
 
 ### `/lives`
 - Fetches and displays recent YouTube videos and completed livestreams via YouTube Data API v3
-- Separate grids for videos (`VideoCard`) and lives (`LiveCard`)
+- Separate grids for `VideoCard` and `LiveCard`
 
 ### `404`
 - Custom not-found page
 
-## YouTube Integration (`app/lib/youtube.ts`)
+---
 
-Centralized fetch layer for the YouTube Data API v3:
+## YouTube Integration
+
+Centralized fetch layer at `app/lib/youtube.ts` using YouTube Data API v3:
 
 - `getLatestVideos()` — 8 most recent uploads
 - `getLatestLives()` — 4 most recent completed livestreams
-- ISR caching with `revalidate: 3600` (1 hour)
+- Caching via Next.js `cacheLife("hours")`
 - Safe error handling — returns `[]` on any failure
 
-Environment variables required (see `env-example`):
+---
+
+## Environment Variables
+
+Create a `.env.local` file based on `env-example`:
+
+```env
+API_KEY=key_here
+CHANNEL_ID=key_here
+```
+
+---
+
+## Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Tests
+
+```bash
+npm run test
+```
