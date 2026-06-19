@@ -2,6 +2,7 @@ import "./globals.css"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   title: "Awakening Asia | Tokyo",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main className="pt-16">
           {children}
           <Analytics />
+          <SpeedInsights />
         </main>
         <Footer />
       </body>
