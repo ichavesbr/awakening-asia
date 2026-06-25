@@ -13,11 +13,14 @@ const contactSchema = z.object({
 type ContactForm = z.infer<typeof contactSchema>
 type FormErrors = Partial<Record<keyof ContactForm, string>>
 
+const ACCESS_KEY = "f86cd165-d79b-4ad8-9a2b-a1159bf6e0ea"
+
 export default function ContactPage() {
   const [form, setForm] = useState<ContactForm>({ name: "", email: "", subject: "", message: "" })
   const [errors, setErrors] = useState<FormErrors>({})
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [apiError, setApiError] = useState<string | null>(null)
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target
@@ -29,37 +32,56 @@ export default function ContactPage() {
     }
   }
 
-  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setApiError(null)
 
     const result = contactSchema.safeParse(form)
-
     if (!result.success) {
       const fieldErrors: FormErrors = {}
       for (const issue of result.error.issues) {
         const field = issue.path[0] as keyof ContactForm
         if (!fieldErrors[field]) fieldErrors[field] = issue.message
       }
-
       setErrors(fieldErrors)
-
       return
     }
 
     setErrors({})
     setLoading(true)
-    setTimeout(() => {
+
+    try {
+      const formData = new FormData()
+      formData.append("access_key", ACCESS_KEY)
+      formData.append("name", form.name)
+      formData.append("email", form.email)
+      formData.append("subject", form.subject)
+      formData.append("message", form.message)
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setApiError(data.message ?? "Something went wrong. Please try again.")
+      }
+    } catch {
+      setApiError("Network error. Please check your connection and try again.")
+    } finally {
       setLoading(false)
-      setSubmitted(true)
-    }, 1200)
+    }
   }
 
-  const fieldClass = () =>
+  const fieldClass =
     "w-full bg-dark-800 border border-dark-600 text-stone-200 text-sm font-light px-4 py-3 placeholder:text-stone-700 focus:outline-none focus:border-gold-600 transition-colors duration-200"
 
   return (
     <main className="min-h-screen bg-dark-900">
-      {/* Hero */}
       <section className="py-24 border-b border-dark-600">
         <div className="max-w-3xl mx-auto px-6">
           <p className="section-label mb-4">Get in Touch</p>
@@ -73,7 +95,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Form */}
       <section className="py-24">
         <div className="max-w-3xl mx-auto px-6">
           {submitted ? (
@@ -88,6 +109,10 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+              {apiError && (
+                <p className="text-red-500 text-sm font-light border border-red-900 px-4 py-3">{apiError}</p>
+              )}
+
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label className="section-label block mb-2" htmlFor="name">
@@ -100,7 +125,7 @@ export default function ContactPage() {
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Your name"
-                    className={fieldClass()}
+                    className={fieldClass}
                   />
                   {errors.name && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.name}</p>}
                 </div>
@@ -115,7 +140,7 @@ export default function ContactPage() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="your@email.com"
-                    className={fieldClass()}
+                    className={fieldClass}
                   />
                   {errors.email && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.email}</p>}
                 </div>
@@ -132,7 +157,7 @@ export default function ContactPage() {
                   value={form.subject}
                   onChange={handleChange}
                   placeholder="How can we help?"
-                  className={fieldClass()}
+                  className={fieldClass}
                 />
                 {errors.subject && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.subject}</p>}
               </div>
@@ -148,7 +173,7 @@ export default function ContactPage() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Write your message here..."
-                  className={`${fieldClass()} resize-none`}
+                  className={`${fieldClass} resize-none`}
                 />
                 {errors.message && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.message}</p>}
               </div>
