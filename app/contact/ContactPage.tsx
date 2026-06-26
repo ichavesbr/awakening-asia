@@ -1,81 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import { z } from "zod"
-
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.email("Please enter a valid email address"),
-  subject: z.string().min(3, "Subject must be at least 3 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-})
-
-type ContactForm = z.infer<typeof contactSchema>
-type FormErrors = Partial<Record<keyof ContactForm, string>>
-
-const ACCESS_KEY = "f86cd165-d79b-4ad8-9a2b-a1159bf6e0ea"
+import { useActionState } from "react"
+import { formAction } from "./actions"
 
 export default function ContactPage() {
-  const [form, setForm] = useState<ContactForm>({ name: "", email: "", subject: "", message: "" })
-  const [errors, setErrors] = useState<FormErrors>({})
-  const [loading, setLoading] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
-  const [apiError, setApiError] = useState<string | null>(null)
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const { name, value } = e.target
-
-    setForm(prev => ({ ...prev, [name]: value }))
-
-    if (errors[name as keyof ContactForm]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }))
-    }
-  }
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    setApiError(null)
-
-    const result = contactSchema.safeParse(form)
-    if (!result.success) {
-      const fieldErrors: FormErrors = {}
-      for (const issue of result.error.issues) {
-        const field = issue.path[0] as keyof ContactForm
-        if (!fieldErrors[field]) fieldErrors[field] = issue.message
-      }
-      setErrors(fieldErrors)
-      return
-    }
-
-    setErrors({})
-    setLoading(true)
-
-    try {
-      const formData = new FormData()
-      formData.append("access_key", ACCESS_KEY)
-      formData.append("name", form.name)
-      formData.append("email", form.email)
-      formData.append("subject", form.subject)
-      formData.append("message", form.message)
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      })
-
-      const data = await response.json()
-
-      if (data.success) {
-        setSubmitted(true)
-      } else {
-        setApiError(data.message ?? "Something went wrong. Please try again.")
-      }
-    } catch {
-      setApiError("Network error. Please check your connection and try again.")
-    } finally {
-      setLoading(false)
-    }
-  }
+  const [data, action, isPending] = useActionState(formAction, null)
 
   const fieldClass =
     "w-full bg-dark-800 border border-dark-600 text-stone-200 text-sm font-light px-4 py-3 placeholder:text-stone-700 focus:outline-none focus:border-gold-600 transition-colors duration-200"
@@ -97,102 +26,56 @@ export default function ContactPage() {
 
       <section className="py-24">
         <div className="max-w-3xl mx-auto px-6">
-          {submitted ? (
-            <div className="border border-dark-600 p-10 text-center">
-              <div className="w-10 h-px bg-gold-400 mx-auto mb-6" />
-              <h3 className="font-serif text-3xl text-stone-100 font-light mb-3">
-                Thank <em>You</em>
-              </h3>
-              <p className="text-stone-400 font-light leading-relaxed">
-                Your message has been received. We&apos;ll be in touch soon.
-              </p>
+          <form action={action} className="space-y-6" noValidate>
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label className="section-label block mb-2" htmlFor="name">
+                  Name
+                </label>
+                <input id="name" name="name" type="text" placeholder="Your name" className={fieldClass} />
+                {data?.errors?.name && <p className="text-red-500 text-xs mt-1">{data?.errors?.name[0]}</p>}
+              </div>
+
+              <div>
+                <label className="section-label block mb-2" htmlFor="email">
+                  Email
+                </label>
+                <input id="email" name="email" type="email" placeholder="your@email.com" className={fieldClass} />
+                {data?.errors?.email && <p className="text-red-500 text-xs mt-1">{data?.errors?.email[0]}</p>}
+              </div>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-              {apiError && (
-                <p className="text-red-500 text-sm font-light border border-red-900 px-4 py-3">{apiError}</p>
-              )}
 
-              <div className="grid sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="section-label block mb-2" htmlFor="name">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={form.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    className={fieldClass}
-                  />
-                  {errors.name && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.name}</p>}
-                </div>
-                <div>
-                  <label className="section-label block mb-2" htmlFor="email">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="your@email.com"
-                    className={fieldClass}
-                  />
-                  {errors.email && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.email}</p>}
-                </div>
-              </div>
+            <div>
+              <label className="section-label block mb-2" htmlFor="subject">
+                Subject
+              </label>
+              <input id="subject" name="subject" type="text" placeholder="How can we help?" className={fieldClass} />
+              {data?.errors?.subject && <p className="text-red-500 text-xs mt-1">{data?.errors?.subject[0]}</p>}
+            </div>
 
-              <div>
-                <label className="section-label block mb-2" htmlFor="subject">
-                  Subject
-                </label>
-                <input
-                  id="subject"
-                  name="subject"
-                  type="text"
-                  value={form.subject}
-                  onChange={handleChange}
-                  placeholder="How can we help?"
-                  className={fieldClass}
-                />
-                {errors.subject && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.subject}</p>}
-              </div>
+            <div>
+              <label className="section-label block mb-2" htmlFor="message">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={8}
+                placeholder="Write your message here..."
+                className={`${fieldClass} resize-none`}
+              />
+              {data?.errors?.message && <p className="text-red-500 text-xs mt-1">{data?.errors?.message[0]}</p>}
+            </div>
 
-              <div>
-                <label className="section-label block mb-2" htmlFor="message">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={8}
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Write your message here..."
-                  className={`${fieldClass} resize-none`}
-                />
-                {errors.message && <p className="mt-1.5 text-red-500 text-xs font-light">{errors.message}</p>}
-              </div>
-
-              <button
-                type="submit"
-                disabled={loading}
-                className="px-8 py-3 border border-gold-600 text-gold-400 text-xs tracking-widest uppercase font-medium transition-all duration-200 hover:bg-gold-500 hover:text-dark-900 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-3">
-                {loading ? (
-                  <>
-                    <span className="w-3 h-3 border border-gold-400 border-t-transparent rounded-full animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  "Send Message"
-                )}
-              </button>
-            </form>
-          )}
+            <button
+              type="submit"
+              disabled={isPending}
+              className="px-8 py-3 border border-gold-600 text-gold-400 text-xs tracking-widest uppercase font-medium transition-all duration-200 hover:bg-gold-500 hover:text-dark-900 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-3">
+              {isPending ? "Sending..." : "Send Message"}
+            </button>
+            {data?.status === "success" && <p className="text-green-500 text-sm">{data.message}</p>}
+            {data?.status === "error" && <p className="text-red-500 text-sm">{data.message}</p>}
+          </form>
         </div>
       </section>
     </main>
