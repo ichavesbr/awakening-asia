@@ -27,6 +27,7 @@ export default function ContactPage() {
       <section className="py-24">
         <div className="max-w-3xl mx-auto px-6">
           <form action={action} className="space-y-6" noValidate>
+            <input type="hidden" name="apikey" value="f86cd165-d79b-4ad8-9a2b-a1159bf6e0ea"></input>
             <div className="grid sm:grid-cols-2 gap-6">
               <div>
                 <label className="section-label block mb-2" htmlFor="name">
@@ -73,8 +74,26 @@ export default function ContactPage() {
               className="px-8 py-3 border border-gold-600 text-gold-400 text-xs tracking-widest uppercase font-medium transition-all duration-200 hover:bg-gold-500 hover:text-dark-900 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-3">
               {isPending ? "Sending..." : "Send Message"}
             </button>
-            {data?.status === "success" && <p className="text-green-500 text-sm">{data.message}</p>}
-            {data?.status === "error" && <p className="text-red-500 text-sm">{data.message}</p>}
+            {data?.status === "success" && (
+              <div className="border border-dark-600 p-10 text-center">
+                <div className="w-10 h-px bg-gold-400 mx-auto mb-6" />
+                <h3 className="font-serif text-3xl text-stone-100 font-light mb-3">
+                  Thank <em>You</em>
+                </h3>
+                <p className="text-stone-400 font-light leading-relaxed">
+                  Your message has been received. We&apos;ll be in touch soon.
+                </p>
+              </div>
+            )}
+            {data?.status === "error" && !data?.errors && (
+              <div className="border border-dark-600 p-10 text-center">
+                <div className="w-10 h-px bg-gold-400 mx-auto mb-6" />
+                <h3 className="font-serif text-3xl text-stone-100 font-light mb-3">
+                  <em>Ops...</em>
+                </h3>
+                <p className="text-stone-400 font-light leading-relaxed">Something went wrong. Try again later.</p>
+              </div>
+            )}
           </form>
         </div>
       </section>

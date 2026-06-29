@@ -18,8 +18,8 @@ export async function formAction(prevState: unknown, formData: FormData) {
   // 2. tratar erros
   if (!result.success) {
     return {
-      status: "error",
-      errors: result.error.flatten().fieldErrors,
+      status: "error", // usar quando houver problema no servidor, sem wifi, etc
+      errors: result.error.flatten().fieldErrors, // usar quando houver falha de validacao
       // envia para o client component os erros assim:
       // data.errors?.name?.[0]
       // data.errors?.email?.[0]
@@ -30,12 +30,24 @@ export async function formAction(prevState: unknown, formData: FormData) {
 
   // 3. preparar dados
   const { name, email, subject, message } = result.data
-  console.log("resultado do sucesso: ", result.data)
 
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData,
+  })
+
+  const data = await response.json()
+  console.log("DATA DO FETCH: ", data)
+  if (!data.success) {
+    return {
+      status: "error",
+      message: data.message,
+    }
+  }
   // 4. retornar dados
   return {
     status: "success",
     message: "message sent successfully",
-    data: result.data,
+    formContent: result.data,
   }
 }
