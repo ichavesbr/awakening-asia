@@ -190,21 +190,17 @@ export default function Join() {
             {/* Map */}
             <div className="relative border border-dark-600 overflow-hidden aspect-square">
               <iframe
-                title="Awakening Asia Tokyo location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d207302.3395702463!2d139.4930659!3d35.6761919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b857628235d%3A0xcdd8686888896a48!2sTokyo%2C%20Japan!5e0!3m2!1sen!2sus!4v1720000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.319638307346!2d139.78158457574838!3d35.71835672793367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188f2a63a354cf%3A0xd90f3ae677b4d9e4!2sAwakening%20Tokyo!5e0!3m2!1sen!2sus!4v1783742019214!5m2!1sen!2sus"
                 width="100%"
                 height="100%"
-                style={{
-                  border: 0,
-                  filter: "grayscale(100%) invert(90%) contrast(85%) brightness(0.4) sepia(20%)",
-                }}
                 allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                // ** referrerPolicy **
+                // strict-origin-when-cross-origin (Recommended): Sends only your base domain (e.g., https://example.com/) to Google
+                // no-referrer-when-downgrade (Legacy): Sends the entire URL (e.g., https://example.com/contact?user=123)
+                referrerPolicy="strict-origin-when-cross-origin"
                 className="absolute inset-0 w-full h-full"
               />
-              {/* Gold overlay tint */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "rgba(212,165,53,0.04)" }} />
             </div>
           </div>
         </div>
