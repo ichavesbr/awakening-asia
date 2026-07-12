@@ -32,7 +32,7 @@ export default function Join() {
   return (
     <main className="min-h-screen bg-dark-900">
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative py-32 border-b border-dark-600 overflow-hidden">
+      <section className="relative min-h-[70vh] flex flex-col items-center justify-center overflow-hidden">
         {/* Radial glow */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -42,12 +42,12 @@ export default function Join() {
         />
 
         {/* Corner brackets */}
-        <div className="absolute top-12 left-8 w-12 h-12 border-l border-t border-gold-600/25 pointer-events-none" />
-        <div className="absolute top-12 right-8 w-12 h-12 border-r border-t border-gold-600/25 pointer-events-none" />
-        <div className="absolute bottom-12 left-8 w-12 h-12 border-l border-b border-gold-600/25 pointer-events-none" />
-        <div className="absolute bottom-12 right-8 w-12 h-12 border-r border-b border-gold-600/25 pointer-events-none" />
+        <div className="absolute top-14 left-8 w-14 h-14 border-l border-t border-gold-600/25 pointer-events-none" />
+        <div className="absolute top-14 right-8 w-14 h-14 border-r border-t border-gold-600/25 pointer-events-none" />
+        <div className="absolute bottom-14 left-8 w-14 h-14 border-l border-b border-gold-600/25 pointer-events-none" />
+        <div className="absolute bottom-14 right-8 w-14 h-14 border-r border-b border-gold-600/25 pointer-events-none" />
 
-        <div className="relative max-w-3xl mx-auto px-6 text-center">
+        <div className="relative max-w-3xl mx-auto px-6 py-20 text-center">
           <p className="section-label mb-6">Tokyo, Japan · Every Sunday</p>
           <h1 className="font-serif text-6xl md:text-8xl text-stone-100 font-light leading-none mb-8">
             Join <em className="text-gold-400 italic">Us</em>
@@ -61,7 +61,7 @@ export default function Join() {
       </section>
 
       {/* ── Service Times ─────────────────────────────────────────────────── */}
-      <section className="py-28 border-b border-dark-600">
+      <section className="py-28 vision-section">
         <div className="max-w-4xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-start gap-16">
             {/* Left label */}
@@ -101,7 +101,7 @@ export default function Join() {
       </section>
 
       {/* ── Photo + What to Expect ─────────────────────────────────────────── */}
-      <section className="py-28 border-b border-dark-600">
+      <section className="py-28 vision-section">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           {/* Image */}
           <div className="relative order-2 md:order-1">
@@ -135,7 +135,7 @@ export default function Join() {
       </section>
 
       {/* ── Location & Map ────────────────────────────────────────────────── */}
-      <section className="py-28">
+      <section className="py-28 vision-section">
         <div className="max-w-4xl mx-auto px-6">
           <div className="mb-12">
             <p className="section-label mb-4">Find Us</p>
