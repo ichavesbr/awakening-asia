@@ -240,17 +240,14 @@ export default function Home() {
           {/* Image with parallax */}
           <FadeIn>
             <div className="relative">
-              <div className="relative w-full aspect-5/6 border border-dark-600 overflow-hidden bg-dark-700">
+              <div className="relative w-full aspect-video md:aspect-4/3 lg:aspect-5/5.5 border border-dark-600 overflow-hidden bg-dark-700">
                 <Image
-                  src="/ministry.png"
+                  src="/who-we-are.jpg"
                   alt="Awakening Asia Ministry"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-dark-900/90 to-transparent px-6 py-5 z-10">
-                  <p className="text-stone-400 text-[0.6rem] tracking-[0.28em] uppercase">Tokyo · Japan</p>
-                </div>
               </div>
               <div className="absolute -bottom-5 -right-5 w-28 h-28 border border-gold-600/20 pointer-events-none" />
               <div className="absolute -top-5 -left-5 w-16 h-16 border border-gold-600/10 pointer-events-none" />

@@ -31,12 +31,12 @@ export default function AboutSection() {
           <div className="relative">
             <div className="relative w-full aspect-5/6 border border-dark-600 overflow-hidden bg-dark-700">
               <Image
-                src="/ministry.png"
+                src="/about.jpg"
                 alt="Ministry"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 loading="eager"
-                className="object-fill"
+                className="object-cover object-[85%_center]"
               />
             </div>
             <div className="absolute -bottom-4 -left-4 w-24 h-24 border border-gold-600 opacity-40 pointer-events-none" />
