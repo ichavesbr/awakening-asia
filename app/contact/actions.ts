@@ -21,10 +21,7 @@ export async function formAction(prevState: unknown, formData: FormData) {
       status: "error", // usar quando houver problema no servidor, sem wifi, etc
       errors: result.error.flatten().fieldErrors, // usar quando houver falha de validacao
       // envia para o client component os erros assim:
-      // data.errors?.name?.[0]
-      // data.errors?.email?.[0]
-      // data.errors?.subject?.[0]
-      // data.errors?.message?.[0]
+      // data.errors?.name?.[0] - mesmo para email, subject, message
     }
   }
 
@@ -44,6 +41,7 @@ export async function formAction(prevState: unknown, formData: FormData) {
       message: data.message,
     }
   }
+
   // 4. retornar dados
   return {
     status: "success",
